@@ -750,10 +750,11 @@
 .frame .image-11 {
   position: absolute;
   top: 1256px;
-  left: 831px;
+  left: 790px;
   width: 330px;
   height: 277px;
   object-fit: cover;
+  transform: scaleX(-1);
 }
 
 .frame .text-wrapper-31 {
