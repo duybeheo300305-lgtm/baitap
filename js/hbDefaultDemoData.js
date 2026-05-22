@@ -31,7 +31,7 @@
         body:
           "Hôm nay là một ngày thật đặc biệt – ngày mà một người tuyệt vời như em xuất hiện trên thế giới này. Anh chỉ muốn nói rằng, gặp được em là điều may mắn nhất.\n\n" +
           "Chúc em luôn xinh đẹp,vui vẻ, hạnh phúc. Dù sau này có chuyện gì xảy ra, anh vẫn sẽ luôn nắm tay em và cùng đồng hành với em qua từng niềm vui nỗi buồn.",
-        signature: "Yêu em bốn mùa Không đổi .",
+        signature: "Yêu em bốn mùa không đổi .",
       },
       finalGift: {
         enabled: true,
