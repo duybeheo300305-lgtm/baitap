@@ -1,0 +1,232 @@
+/* Màn hộp quà mở đầu + yêu cầu xoay ngang (index) */
+@font-face {
+  font-family: "Pacifico-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/Pacifico-Regular.ttf") format("truetype");
+}
+
+/* —— Màn hộp quà —— */
+.gift-tap-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    #fff5f9 0%,
+    #ffe8f2 35%,
+    #ffd6e8 70%,
+    #ffcee3 100%
+  );
+}
+
+.gift-tap-screen__btn {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+}
+
+.gift-tap-screen__btn:hover {
+  transform: scale(1.06);
+}
+
+.gift-tap-screen__btn:focus-visible {
+  outline: 3px solid rgba(255, 160, 210, 0.9);
+  outline-offset: 10px;
+}
+
+.gift-tap-screen__icon-ring {
+  position: absolute;
+  width: 11.5rem;
+  height: 11.5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 200, 0.45) 0%,
+    rgba(255, 100, 170, 0.15) 45%,
+    transparent 70%
+  );
+  animation: giftTapRing 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes giftTapRing {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.gift-tap-screen__icon {
+  position: relative;
+  z-index: 1;
+  width: clamp(6.5rem, 22vw, 8.5rem);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(255, 120, 190, 0.95))
+    drop-shadow(0 0 28px rgba(255, 80, 160, 0.65))
+    drop-shadow(0 0 48px rgba(255, 140, 200, 0.4));
+  animation: giftTapIconGlow 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes giftTapIconGlow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(255, 140, 200, 0.85))
+      drop-shadow(0 0 24px rgba(255, 90, 170, 0.5))
+      drop-shadow(0 0 40px rgba(255, 160, 210, 0.35));
+    transform: scale(1);
+  }
+  to {
+    filter: drop-shadow(0 0 18px rgba(255, 200, 230, 1))
+      drop-shadow(0 0 36px rgba(255, 100, 180, 0.75))
+      drop-shadow(0 0 56px rgba(255, 130, 200, 0.45));
+    transform: scale(1.04);
+  }
+}
+
+.gift-tap-screen__hint {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-family: "Pacifico-Regular", cursive;
+  font-size: clamp(1.35rem, 4.2vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(120, 52, 82, 0.88);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.gift-tap-screen--leaving {
+  pointer-events: none;
+  animation: giftTapLeave 0.48s ease forwards;
+}
+
+@keyframes giftTapLeave {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* —— Yêu cầu xoay ngang (điện thoại / iPad dọc) —— */
+.orientation-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: linear-gradient(
+    160deg,
+    #fff5f9 0%,
+    #ffe8f2 40%,
+    #ffd6e8 100%
+  );
+}
+
+.orientation-gate[hidden] {
+  display: none !important;
+}
+
+.orientation-gate__card {
+  max-width: 22rem;
+  text-align: center;
+}
+
+.orientation-gate__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  height: 5.5rem;
+}
+
+.orientation-gate__device {
+  width: 3rem;
+  height: 4.75rem;
+  border-radius: 0.45rem;
+  border: 3px solid rgba(120, 52, 82, 0.45);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 2px 12px rgba(200, 100, 150, 0.2);
+  transform: rotate(0deg);
+  animation: orientationGateTilt 2.4s ease-in-out infinite;
+}
+
+@keyframes orientationGateTilt {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  45%,
+  55% {
+    transform: rotate(-90deg);
+  }
+}
+
+.orientation-gate__arrow {
+  position: absolute;
+  right: calc(50% - 3.5rem);
+  font-size: 2rem;
+  line-height: 1;
+  color: rgba(200, 80, 130, 0.85);
+  animation: orientationGateSpin 2.4s ease-in-out infinite;
+}
+
+@keyframes orientationGateSpin {
+  0%,
+  35% {
+    opacity: 0.35;
+    transform: rotate(0deg);
+  }
+  50%,
+  65% {
+    opacity: 1;
+    transform: rotate(-180deg);
+  }
+  100% {
+    opacity: 0.35;
+    transform: rotate(-360deg);
+  }
+}
+
+.orientation-gate__title {
+  margin: 0 0 0.65rem;
+  font-family: "Pacifico-Regular", cursive;
+  font-size: clamp(1.5rem, 5vw, 1.85rem);
+  font-weight: 400;
+  color: rgba(100, 40, 68, 0.92);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.orientation-gate__text {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(90, 48, 70, 0.88);
+}

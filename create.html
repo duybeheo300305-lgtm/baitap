@@ -1,0 +1,5119 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trang tạo nội dung quà sinh nhật giúp bạn soạn lời chúc, tùy chỉnh thông điệp và chuẩn bị bất ngờ ý nghĩa."
+    />
+    <meta
+      name="keywords"
+      content="tạo lời chúc sinh nhật, tạo nội dung sinh nhật, quà sinh nhật, happy birthday vip"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ff5fa8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:title" content="Tạo Nội Dung Quà Sinh Nhật" />
+    <meta
+      property="og:description"
+      content="Công cụ tạo nội dung quà sinh nhật nhanh chóng, dễ tùy chỉnh và giàu cảm xúc."
+    />
+    <meta property="og:image" content="https://happybirthdayvip.onrender.com/assets/logo/logoCake.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Tạo Nội Dung Quà Sinh Nhật" />
+    <meta
+      property="twitter:description"
+      content="Tạo lời chúc sinh nhật ấn tượng và cá nhân hóa món quà trực tuyến của bạn."
+    />
+    <meta property="twitter:image" content="./assets/logo/logoCake.png" />
+    <title>Tạo Nội Dung Quà Sinh Nhật</title>
+    <link rel="icon" type="image/png" href="./assets/logo/logoCake.png" />
+    <!-- Chặn DevTools (F12, Ctrl+Shift+I, Inspect, …). Bypass: tham số URL ?key=… theo DisableDevtool -->
+    <script src="./js/detect-devtools.js"></script>
+    <script>
+      (function () {
+        var keyName = "key";
+        var keyValue = "9ac7ec230e0e4513578f309d6d3579ad";
+        if (typeof DisableDevtool === "function") {
+          DisableDevtool({
+            tkName: keyName,
+            md5: keyValue,
+            interval: 100,
+          });
+        }
+      })();
+    </script>
+    <style>
+      @font-face {
+        font-family: "Pacifico-Regular";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("./assets/fonts/Pacifico-Regular.ttf") format("truetype");
+      }
+
+      :root {
+        --pink-1: #fff4fa;
+        --pink-2: #ffd9ea;
+        --pink-3: #ff9ec8;
+        --pink-4: #ff5fa8;
+        --pink-5: #c83579;
+        --text: #5a2642;
+        --card: rgba(255, 255, 255, 0.86);
+        --shadow: 0 14px 36px rgba(200, 53, 121, 0.2);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: clamp(17px, 2.1vw, 19px);
+        line-height: 1.55;
+        color: var(--text);
+        background: transparent;
+        padding: 24px;
+      }
+
+      .login-page-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          145deg,
+          #fff0f8 0%,
+          #ffd9ea 28%,
+          #ffb6d9 56%,
+          #ff9ec8 78%,
+          #ff85bc 100%
+        );
+      }
+
+      /* Đẩy layer icon nền lên trên gradient, vẫn dưới nội dung */
+      .login-gate__cake,
+      .login-gate__gau {
+        z-index: 1;
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+        max-width: 980px;
+        margin: 0 auto;
+        display: grid;
+        gap: 16px;
+      }
+
+      .page-hero {
+        text-align: center;
+        padding: 16px 8px 12px;
+        overflow: visible;
+      }
+
+      /*
+       * Gradient + background-clip:text hay cắt nét dưới font script (Pacifico).
+       * Dùng lớp giả phía sau + chữ màu đặc phía trên (chỉ gradient nhìn xuyên qua khe line-height).
+       * Đơn giản hơn: bọc tiêu đề + padding đủ lớn cho descender.
+       */
+      .page-hero-title {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0.1em 0 0.45em;
+        overflow: visible;
+      }
+
+      .page-hero h1 {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        font-family: "Pacifico-Regular", "Segoe UI", cursive, sans-serif;
+        font-size: clamp(36px, 5.6vw, 58px);
+        font-weight: 400;
+        line-height: 1.55;
+        letter-spacing: 0.02em;
+        color: #c83579;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.35),
+          0 4px 18px rgba(200, 53, 121, 0.22);
+      }
+
+      .page-hero p {
+        margin: 8px 0 0;
+        font-size: 1.05em;
+        color: #b14679;
+        font-weight: 600;
+      }
+
+      .header,
+      .card {
+        background: var(--card);
+        border: 1px solid #ffd1e7;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .header {
+        padding: 18px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .mail {
+        font-size: 1em;
+      }
+
+      .mail code {
+        color: var(--pink-5);
+        font-weight: 600;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: none;
+        border-radius: 999px;
+        padding: 11px 18px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .header-actions .btn img {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+
+      .btn-history {
+        background: linear-gradient(135deg, #ffb5d8, #e97eb5);
+        color: #fff;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .header-actions .btn {
+        font-size: 0.92em;
+        padding: 9px 14px;
+        border-radius: 12px;
+        border: none;
+      }
+
+      .btn-logout {
+        background: #ffe0ef;
+        color: #9d3368;
+      }
+
+      .order-history-dialog {
+        border: none;
+        border-radius: 16px;
+        padding: 0;
+        width: min(680px, 92vw);
+        background: #fffafc;
+        box-shadow: 0 18px 50px rgba(160, 51, 110, 0.3);
+        /* Cuộn cả khối dialog: tránh flex:1 + min-height:0 làm co hết vùng list trên Chrome/Safari */
+        max-height: calc(100vh - 24px);
+        max-height: calc(100dvh - 24px);
+        margin: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+      }
+
+      .order-history-dialog::backdrop {
+        background: rgba(85, 23, 56, 0.45);
+      }
+
+      .order-history-content {
+        padding: 16px;
+        min-height: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .order-history-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(200, 53, 121, 0.22);
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        margin-top: -2px;
+        padding-top: 2px;
+        background: #fffafc;
+      }
+
+      .order-history-head h3 {
+        margin: 0;
+        color: #c83579;
+        font-size: 1.05em;
+      }
+
+      .btn-close-history {
+        border: 1px solid #efbdd7;
+        background: #fff;
+        color: #a03b6e;
+        border-radius: 10px;
+        width: 34px;
+        height: 34px;
+        padding: 0;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .order-history-list {
+        display: grid;
+        gap: 14px;
+        align-content: start;
+        padding: 2px 4px 8px;
+      }
+
+      .order-history-empty {
+        margin: 0;
+        padding: 16px 12px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #a03b6e;
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+        min-height: 250px;
+        align-content: center;
+      }
+
+      .order-history-empty img {
+        width: 72px;
+        height: 72px;
+        object-fit: contain;
+      }
+
+      /* Tránh display:grid trên các panel làm [hidden] không ẩn được */
+      .order-history-empty[hidden],
+      .order-history-loading[hidden],
+      .order-history-error[hidden],
+      .order-history-list[hidden] {
+        display: none !important;
+      }
+
+      .order-history-loading,
+      .order-history-error {
+        margin: 0;
+        padding: 24px 12px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #a03b6e;
+        min-height: 200px;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 8px;
+      }
+
+      .order-history-error {
+        color: #b03030;
+      }
+
+      .order-history-card {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        background: linear-gradient(145deg, #fff 0%, #fff8fc 100%);
+        box-shadow:
+          0 4px 20px rgba(200, 53, 121, 0.12),
+          0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        border: 1px solid rgba(242, 195, 220, 0.85);
+      }
+
+      .order-history-card__main {
+        padding: 12px 14px 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .order-history-card__topline {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 10px 12px;
+        background: rgba(255, 240, 248, 0.65);
+        border: 1px solid rgba(239, 189, 215, 0.6);
+        border-radius: 10px;
+      }
+
+      .order-history-card__code-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .order-history-card__code-label {
+        font-size: 0.72em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #c2185b;
+        opacity: 0.88;
+        flex-shrink: 0;
+      }
+
+      .order-history-card__topline .order-history-badge {
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .order-history-badge {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.78em;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .order-history-badge--pending {
+        background: linear-gradient(135deg, #fff4e0 0%, #ffe0b8 100%);
+        color: #b45309;
+        border: 1px solid rgba(245, 158, 11, 0.35);
+      }
+
+      .order-history-badge--paid {
+        background: linear-gradient(135deg, #e8fff4 0%, #c8f5e0 100%);
+        color: #047857;
+        border: 1px solid rgba(16, 185, 129, 0.35);
+      }
+
+      .order-history-badge--cancelled {
+        background: #f3f4f6;
+        color: #6b7280;
+        border: 1px solid #e5e7eb;
+      }
+
+      .order-history-badge--expired {
+        background: #fef2f2;
+        color: #b91c1c;
+        border: 1px solid #fecaca;
+      }
+
+      .order-history-badge--other {
+        background: #f5f3ff;
+        color: #6d28d9;
+        border: 1px solid #ddd6fe;
+      }
+
+      .order-history-card__code-group code {
+        flex: 1;
+        min-width: 0;
+        font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+        font-size: 0.9em;
+        font-weight: 600;
+        color: #7c1d4a;
+        background: #fff;
+        padding: 7px 10px;
+        border-radius: 8px;
+        border: 1px dashed rgba(200, 53, 121, 0.35);
+        /* Một dòng ngang trên điện thoại; break-all làm từng ký tự xuống dòng */
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+
+      .btn-copy-code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        background: linear-gradient(135deg, #e91e8c 0%, #c2185b 100%);
+        box-shadow: 0 2px 10px rgba(194, 24, 91, 0.35);
+        flex-shrink: 0;
+        transition:
+          transform 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+
+      .btn-copy-code:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(194, 24, 91, 0.45);
+      }
+
+      .btn-copy-code svg {
+        display: block;
+        opacity: 0.95;
+      }
+
+      .order-history-stats {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: #fff;
+        border: 1px solid rgba(242, 195, 220, 0.55);
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
+
+      .order-history-stat-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px 14px;
+        min-width: 0;
+      }
+
+      .order-history-stats .oh-label {
+        font-size: 0.72em;
+        font-weight: 600;
+        color: #a03b6e;
+        opacity: 0.9;
+        flex-shrink: 0;
+      }
+
+      .order-history-stats .oh-value {
+        font-size: 0.9em;
+        font-weight: 700;
+        color: #6b2148;
+        text-align: right;
+        word-break: break-word;
+      }
+
+      .order-history-stats .oh-value--price {
+        font-size: 1.02em;
+        font-weight: 700;
+        color: #c2185b;
+      }
+
+      .order-history-card-actions {
+        display: grid;
+        gap: 8px;
+        margin-top: 2px;
+      }
+
+      .btn-order-pay-now {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.92em;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        background: linear-gradient(
+          135deg,
+          #ff8a9b 0%,
+          #e91e8c 45%,
+          #c2185b 100%
+        );
+        box-shadow: 0 4px 16px rgba(233, 30, 140, 0.4);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .btn-order-pay-now:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(233, 30, 140, 0.48);
+      }
+
+      .btn-order-pay-now:disabled {
+        opacity: 0.65;
+        cursor: wait;
+        transform: none;
+      }
+
+      .order-history-paid-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      /* Điện thoại: thẻ đơn gọn, dễ đọc, vùng chạm đủ lớn */
+      @media (max-width: 520px) {
+        body {
+          padding: 12px;
+          font-size: clamp(15px, 3.8vw, 17px);
+        }
+
+        .container {
+          gap: 12px;
+        }
+
+        .header {
+          padding: 12px;
+          align-items: flex-start;
+        }
+
+        .header-actions {
+          width: 100%;
+        }
+
+        .header-actions .btn {
+          flex: 1 1 calc(50% - 8px);
+          min-height: 42px;
+        }
+
+        .card {
+          padding: 12px;
+        }
+
+        .payment-actions {
+          flex-wrap: wrap;
+          flex-direction: column;
+        }
+
+        .payment-actions .btn {
+          width: 100%;
+        }
+
+        .order-history-dialog {
+          width: calc(100vw - 16px);
+          max-width: calc(100vw - 16px);
+          max-height: calc(
+            100vh - env(safe-area-inset-top, 0px) -
+              env(safe-area-inset-bottom, 0px) - 16px
+          );
+          max-height: calc(
+            100dvh - env(safe-area-inset-top, 0px) -
+              env(safe-area-inset-bottom, 0px) - 16px
+          );
+        }
+
+        .order-history-content {
+          padding: 12px 10px max(14px, env(safe-area-inset-bottom, 0px));
+        }
+
+        .order-history-head h3 {
+          font-size: 1em;
+        }
+
+        .order-history-list {
+          gap: 12px;
+          padding: 0 0 6px;
+        }
+
+        .order-history-card__main {
+          padding: 10px 12px 12px;
+          gap: 10px;
+        }
+
+        .order-history-card__topline {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+          padding: 12px 11px;
+        }
+
+        .order-history-card__topline .order-history-badge {
+          margin-left: 0;
+          align-self: flex-start;
+          order: -1;
+        }
+
+        .order-history-card__code-group {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-rows: auto auto;
+          gap: 6px 10px;
+          width: 100%;
+          flex: none;
+        }
+
+        .order-history-card__code-label {
+          grid-column: 1 / -1;
+          font-size: 0.68em;
+        }
+
+        .order-history-card__code-group code {
+          grid-column: 1;
+          grid-row: 2;
+          padding: 9px 10px;
+          font-size: 0.84em;
+        }
+
+        .order-history-card__code-group .btn-copy-code {
+          grid-column: 2;
+          grid-row: 2;
+          width: 44px;
+          height: 44px;
+          align-self: center;
+        }
+
+        .order-history-stats {
+          gap: 7px;
+          padding: 9px 11px;
+        }
+
+        .order-history-stat-row {
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 6px 10px;
+        }
+
+        .order-history-stats .oh-label {
+          flex: 1 1 auto;
+          min-width: 0;
+          margin: 0;
+        }
+
+        .order-history-stats .oh-value {
+          flex: 0 1 auto;
+        }
+
+        .order-history-paid-actions {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .btn-order-paid {
+          width: 100%;
+          min-height: 46px;
+          padding: 12px 14px;
+          font-size: 0.84em;
+          box-sizing: border-box;
+        }
+
+        .btn-order-pay-now {
+          min-height: 48px;
+          font-size: 0.94em;
+        }
+      }
+
+      .btn-order-paid {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 8px;
+        border-radius: 10px;
+        font-size: 0.8em;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-align: center;
+        line-height: 1.25;
+        transition:
+          transform 0.12s ease,
+          box-shadow 0.12s ease;
+      }
+
+      .btn-order-paid svg {
+        flex-shrink: 0;
+      }
+
+      .btn-order-paid--primary {
+        background: linear-gradient(135deg, #ffc1df 0%, #ea86b9 100%);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.35);
+        box-shadow: 0 2px 12px rgba(234, 134, 185, 0.45);
+      }
+
+      .btn-order-paid--secondary {
+        background: #fff;
+        color: #c2185b;
+        border-color: #efbdd7;
+      }
+
+      .btn-order-paid--accent {
+        background: linear-gradient(135deg, #f5f0ff 0%, #ede9fe 100%);
+        color: #5b21b6;
+        border-color: #ddd6fe;
+      }
+
+      .btn-order-paid:hover:not(:disabled) {
+        transform: translateY(-1px);
+      }
+
+      .btn-order-paid:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .btn-book-pick {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: linear-gradient(
+          135deg,
+          #ffc1df 0%,
+          #f79bc7 45%,
+          #ea86b9 100%
+        );
+        color: #fff;
+        font-size: 0.92em;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(233, 30, 124, 0.24);
+        transition:
+          filter 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .btn-book-pick img {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+
+      .btn-book-pick:hover {
+        filter: brightness(1.06);
+        box-shadow: 0 6px 20px rgba(233, 30, 124, 0.38);
+      }
+
+      .btn-book-pick:active {
+        transform: translateY(1px);
+        filter: brightness(0.98);
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+        font-family: "Pacifico-Regular", "Segoe UI", cursive, sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        line-height: 1.5;
+        display: inline-block;
+        padding: 0.05em 0.05em 0.3em;
+        overflow: visible;
+        color: #d63384;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.35),
+          0 4px 16px rgba(214, 51, 132, 0.16);
+      }
+
+      .title-with-toggle {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+
+      .title-with-toggle h2 {
+        margin: 0;
+      }
+
+      .gift-toggle-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+
+      .gift-toggle-row h2 {
+        margin: 0;
+        padding: 0;
+        line-height: 1.25;
+      }
+
+      .gift-toggle-row .checkbox-row {
+        margin: 0;
+      }
+
+      .gift-toggle-row .checkbox-row input[type="checkbox"] {
+        margin: 0;
+      }
+
+      .gift-price-tag {
+        color: #c83579;
+        font-size: 0.92em;
+        font-weight: 700;
+      }
+
+      .gift-wishes-wrap {
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .gift-wishes-wrap[hidden] {
+        display: none !important;
+      }
+
+      .gift-image-source-note {
+        margin: 0;
+        font-style: italic;
+        color: #9d4a72;
+      }
+
+      .gift-wishes-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .gift-wish-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .gift-wish-input {
+        flex: 1;
+      }
+
+      .gift-wish-input:focus,
+      .gift-wish-input:focus-visible {
+        border-color: #ff5fa8;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 95, 168, 0.18);
+      }
+
+      .gift-wish-remove {
+        border: 1px solid #efbdd7;
+        border-radius: 10px;
+        background: #fff;
+        color: #a03b6e;
+        width: 34px;
+        height: 34px;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .gift-wish-remove img {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .gift-add-btn {
+        border: 1px dashed #ff9ec8;
+        border-radius: 10px;
+        background: #fff;
+        color: #a25780;
+        font: inherit;
+        font-size: 0.88em;
+        font-weight: 600;
+        padding: 7px 10px;
+        width: fit-content;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .gift-add-btn img {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+        display: block;
+      }
+
+      #applyGiftWishTemplatesBtn {
+        border: none;
+        background: linear-gradient(
+          135deg,
+          #ff9ec8 0%,
+          #ff5fa8 55%,
+          #d63384 100%
+        );
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(214, 51, 132, 0.22);
+      }
+
+      .gift-wishes-note {
+        color: #c83579;
+        font-weight: 700;
+      }
+
+      .hint {
+        margin: 4px 0 12px;
+        font-size: 0.88em;
+        color: #a25780;
+      }
+
+      .grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      label {
+        font-size: 1em;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 8px;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        border: 1px solid #f0b7d4;
+        background: #fff;
+        color: var(--text);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font: inherit;
+      }
+
+      input[type="text"]::placeholder,
+      textarea::placeholder {
+        font-size: 0.9em;
+        color: #b77a98;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      #recipientName:focus,
+      #recipientName:focus-visible,
+      #letterTitle:focus,
+      #letterTitle:focus-visible,
+      #letterBody:focus,
+      #letterBody:focus-visible,
+      #letterSignature:focus,
+      #letterSignature:focus-visible {
+        border-color: #ff5fa8;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 95, 168, 0.18);
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        margin-top: 4px;
+      }
+
+      .permanent-save-label {
+        color: #c83579;
+      }
+
+      .checkbox-row input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        border: 1.5px solid #e7a4c8;
+        border-radius: 5px;
+        background: #fff;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .checkbox-row input[type="checkbox"]::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        transform: scale(0);
+        transition: transform 0.16s ease;
+        clip-path: polygon(14% 52%, 0 66%, 42% 100%, 100% 22%, 84% 8%, 40% 68%);
+        background: #fff;
+      }
+
+      .checkbox-row input[type="checkbox"]:checked {
+        border-color: #d63384;
+        background: linear-gradient(
+          135deg,
+          #ff9ec8 0%,
+          #ff5fa8 52%,
+          #d63384 100%
+        );
+        box-shadow: 0 0 0 3px rgba(255, 95, 168, 0.2);
+      }
+
+      .checkbox-row input[type="checkbox"]:checked::before {
+        transform: scale(1);
+      }
+
+      .book-picker-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .book-picker-row input[type="file"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .book-image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+        gap: 12px;
+        margin-top: 4px;
+      }
+
+      .book-thumb-wrap {
+        position: relative;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 2px solid #ffd1e7;
+        aspect-ratio: 1;
+        background: #fff8fc;
+        box-shadow: 0 4px 14px rgba(200, 53, 121, 0.12);
+      }
+
+      .book-thumb-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .book-thumb-remove {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 28px;
+        height: 28px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #e91e7c, #b31256);
+        color: #fff;
+        font-size: 1.15em;
+        line-height: 1;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        box-shadow: 0 2px 10px rgba(179, 18, 86, 0.35);
+        transition:
+          transform 0.15s ease,
+          filter 0.15s ease;
+      }
+
+      .book-thumb-remove:hover {
+        transform: scale(1.08);
+        filter: brightness(1.08);
+      }
+
+      .book-count-hint {
+        font-size: 0.88em;
+        color: #a25780;
+        margin-top: 6px;
+      }
+
+      .album-price-note {
+        margin-left: 6px;
+        font-size: 0.84em;
+        font-weight: 700;
+        color: #c83579;
+      }
+
+      .error {
+        margin-top: 6px;
+        color: #b3004b;
+        font-size: 0.88em;
+      }
+
+      .intro-demo-wrap {
+        margin-top: 12px;
+        text-align: center;
+      }
+
+      .intro-demo-wrap img {
+        display: inline-block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
+        border-radius: 14px;
+        border: 1px solid #f3c2dc;
+        object-fit: contain;
+      }
+
+      .music-picker-wrap {
+        margin-top: 10px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .music-picker-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .music-file-hint {
+        font-size: 0.84em;
+        color: #a25780;
+      }
+
+      .music-preview-wrap {
+        margin-top: 4px;
+        display: grid;
+        gap: 6px;
+        border: 1px solid #f0b7d4;
+        border-radius: 12px;
+        background: #fff8fc;
+        padding: 10px;
+      }
+
+      .music-preview-wrap[hidden] {
+        display: none !important;
+      }
+
+      .music-preview-wrap audio {
+        width: 100%;
+      }
+
+      .music-preview-progress {
+        width: 100%;
+        accent-color: #ff5fa8;
+        background: transparent;
+      }
+
+      .music-preview-progress::-webkit-slider-runnable-track {
+        height: 8px;
+        border-radius: 999px;
+        background: #ffd7ea;
+      }
+
+      .music-preview-progress::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #ff5fa8;
+        border: 1px solid #fff;
+        margin-top: -3px;
+        box-shadow: 0 1px 4px rgba(214, 51, 132, 0.25);
+      }
+
+      .music-preview-progress::-moz-range-track {
+        height: 8px;
+        border-radius: 999px;
+        background: #ffd7ea;
+      }
+
+      .music-preview-progress::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #ff5fa8;
+        border: 1px solid #fff;
+        box-shadow: 0 1px 4px rgba(214, 51, 132, 0.25);
+      }
+
+      .music-preview-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .music-preview-play-btn {
+        border: 1px solid #f0b7d4;
+        border-radius: 999px;
+        background: #fff;
+        color: #a25780;
+        font: inherit;
+        font-size: 0.88em;
+        font-weight: 600;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: 150px;
+        height: 38px;
+        box-sizing: border-box;
+        justify-content: center;
+      }
+
+      .music-preview-time {
+        font-size: 0.84em;
+        color: #a25780;
+      }
+
+      .music-sample-select {
+        width: 100%;
+        border: 1px solid #ff9ec8;
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: linear-gradient(180deg, #fff8fc 0%, #ffeef7 100%), #fff;
+        color: #a25780;
+        font: inherit;
+        font-size: 0.9em;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(214, 51, 132, 0.08);
+        outline: none;
+      }
+
+      .music-sample-select:focus,
+      .music-sample-select:focus-visible,
+      .music-sample-select:active {
+        border-color: #ff5fa8;
+        outline: none;
+        box-shadow:
+          0 0 0 3px rgba(255, 95, 168, 0.18),
+          0 4px 12px rgba(214, 51, 132, 0.1);
+      }
+
+      .music-file-input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .music-file-picker {
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+        justify-items: end;
+      }
+
+      .music-file-actions {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .music-file-main {
+        display: grid;
+        gap: 8px;
+      }
+
+      .music-file-btn {
+        border: 1.5px dashed #ff9ec8;
+        border-radius: 12px;
+        padding: 7px 10px;
+        background: #fff8fc;
+        color: #a25780;
+        font: inherit;
+        font-size: 0.9em;
+        font-weight: 500;
+        cursor: pointer;
+        text-align: left;
+        width: fit-content;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .music-file-btn img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .music-guide-link {
+        border: none;
+        background: transparent;
+        padding: 0;
+        color: #c83579;
+        font: inherit;
+        font-size: 0.9em;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+      }
+
+      .music-guide-dialog {
+        border: none;
+        border-radius: 16px;
+        padding: 0;
+        width: min(760px, 94vw);
+        background: #fffafc;
+        box-shadow: 0 18px 50px rgba(160, 51, 110, 0.3);
+      }
+
+      .music-guide-dialog::backdrop {
+        background: rgba(85, 23, 56, 0.45);
+      }
+
+      .missing-required-dialog {
+        border: none;
+        border-radius: 16px;
+        padding: 0;
+        width: min(520px, 92vw);
+        background: #fffafc;
+        box-shadow: 0 18px 50px rgba(160, 51, 110, 0.3);
+      }
+
+      .missing-required-dialog::backdrop {
+        background: rgba(85, 23, 56, 0.45);
+      }
+
+      .missing-required-content {
+        padding: 16px;
+      }
+
+      .missing-required-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(200, 53, 121, 0.22);
+      }
+
+      .missing-required-head h3 {
+        margin: 0;
+        color: #c83579;
+      }
+
+      .missing-required-list {
+        margin: 0;
+        padding-left: 20px;
+        display: grid;
+        gap: 8px;
+        color: #8e2f62;
+      }
+
+      .missing-required-foot {
+        margin-top: 14px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .tiktok-follow-qr-msg {
+        margin: 0 0 14px;
+        color: #8e2f62;
+        line-height: 1.55;
+        font-size: 0.98rem;
+      }
+
+      .tiktok-follow-qr-msg .tiktok-follow-qr-link {
+        color: #c83579;
+        font-weight: 700;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .tiktok-follow-qr-msg .tiktok-follow-qr-link:hover {
+        color: #a62962;
+      }
+
+      .music-guide-content {
+        padding: 16px;
+      }
+
+      .music-guide-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        border-bottom: 1px solid rgba(200, 53, 121, 0.22);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+
+      .music-guide-head h3 {
+        margin: 0;
+        color: #c83579;
+        font-size: 1.18em;
+        font-family: "Pacifico-Regular", "Segoe UI", cursive, sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.2px;
+      }
+
+      .music-guide-body {
+        color: #8c3b67;
+        font-size: 0.9em;
+        line-height: 1.6;
+      }
+
+      .music-guide-body p {
+        margin: 0 0 8px;
+      }
+
+      .music-guide-item {
+        border: 1px solid #f0b7d4;
+        border-radius: 12px;
+        background: #fff;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+      }
+
+      .music-guide-item p:last-child {
+        margin-bottom: 0;
+      }
+
+      .music-guide-url {
+        color: #d63384;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .music-guide-platform {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .music-guide-platform img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        display: block;
+      }
+
+      .album-demo-wrap {
+        margin: 10px 0 12px;
+        text-align: center;
+      }
+
+      .album-demo-wrap img {
+        display: inline-block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
+        border-radius: 14px;
+        border: 1px solid #f3c2dc;
+        object-fit: contain;
+      }
+
+      .gift-demo-wrap {
+        margin: 10px 0 2px;
+        text-align: center;
+      }
+
+      .gift-demo-wrap img {
+        display: inline-block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
+        border-radius: 14px;
+        border: 1px solid #f3c2dc;
+        object-fit: contain;
+      }
+
+      .letter-demo-wrap {
+        margin: 12px 0 0;
+        text-align: center;
+      }
+
+      .letter-demo-wrap img {
+        display: inline-block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 320px;
+        border-radius: 14px;
+        border: 1px solid #f3c2dc;
+        object-fit: contain;
+      }
+
+      .payment-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .payment-kind {
+        display: grid;
+        gap: 8px;
+      }
+
+      .payment-kind-heading {
+        font-size: 1em;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .payment-radio-row input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        border: 1.5px solid #e7a4c8;
+        border-radius: 50%;
+        background: #fff;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .payment-radio-row input[type="radio"]::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 0.16s ease;
+        background: #fff;
+      }
+
+      .payment-radio-row input[type="radio"]:checked {
+        border-color: #d63384;
+        background: linear-gradient(
+          135deg,
+          #ff9ec8 0%,
+          #ff5fa8 52%,
+          #d63384 100%
+        );
+        box-shadow: 0 2px 8px rgba(214, 51, 132, 0.25);
+      }
+
+      .payment-radio-row input[type="radio"]:checked::before {
+        transform: scale(1);
+      }
+
+      .payment-method-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+      }
+
+      .payment-method-card {
+        border: 1px solid #f0b7d4;
+        border-radius: 12px;
+        padding: 12px;
+        background: #fff;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .payment-method-card:hover {
+        border-color: #e88abb;
+      }
+
+      .payment-method-card:has(input[type="radio"]:checked) {
+        border-color: #d63384;
+        background: linear-gradient(180deg, #fff6fb 0%, #ffeaf5 100%);
+        box-shadow: 0 6px 16px rgba(214, 51, 132, 0.16);
+        transform: translateY(-1px);
+        font-weight: 700;
+      }
+
+      .price-line {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 1em;
+      }
+
+      .price-line strong {
+        color: #b31256;
+      }
+
+      .price-summary {
+        border: 1px solid #f0b7d4;
+        border-radius: 12px;
+        background: #fffafc;
+        padding: 12px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .price-divider {
+        height: 1px;
+        background: rgba(214, 51, 132, 0.22);
+        margin: 2px 0;
+      }
+
+      .payment-actions {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+        margin-top: 8px;
+      }
+
+      .payment-actions .btn {
+        flex: 1 1 0;
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+      }
+
+      .payment-actions .btn img {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+
+      .btn-preview {
+        background: #ffd8ea;
+        color: #8a2f60;
+      }
+
+      .btn-pay {
+        background: linear-gradient(135deg, #ff8fc1, #d63384);
+        color: #fff;
+      }
+
+      .payment-note {
+        margin: 10px 0 0;
+        font-size: 0.82em;
+        color: #a04570;
+        border: 1px solid #f0b7d4;
+        border-radius: 12px;
+        background: #fff6fb;
+        padding: 10px 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .payment-note-content {
+        min-width: 0;
+        line-height: 1.55;
+      }
+
+      .payment-note strong {
+        color: #c83579;
+        font-weight: 700;
+      }
+
+      .payment-note img {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+
+      .inline-history-link {
+        border: none;
+        background: transparent;
+        padding: 0;
+        color: #c83579;
+        font: inherit;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+      }
+
+      .contact-note {
+        margin-top: 10px;
+        border: 1px solid #f0b7d4;
+        border-radius: 12px;
+        background: #fff8fc;
+        padding: 10px 12px;
+      }
+
+      .contact-note-title {
+        margin: 0 0 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95em;
+        font-weight: 700;
+        color: #c83579;
+      }
+
+      .contact-note-title img {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+
+      .contact-icons {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 8px;
+        justify-content: center;
+      }
+
+      .social-icon {
+        width: 52px;
+        height: 52px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      a.social-icon {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .social-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .contact-note-text {
+        margin: 0;
+        font-size: 0.88em;
+        color: #a04570;
+        text-align: center;
+      }
+
+      .footer {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #ff7bb8, #d84088);
+        color: #fff;
+      }
+
+      .btn-secondary {
+        background: #ffd5e9;
+        color: #842859;
+      }
+
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family:
+          ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
+        font-size: 0.9em;
+        background: #fff7fb;
+        border: 1px dashed #f0b7d4;
+        border-radius: 12px;
+        padding: 12px;
+      }
+
+      .login-gate {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        overflow: auto;
+        background: linear-gradient(
+          145deg,
+          #fff0f8 0%,
+          #ffd9ea 28%,
+          #ffb6d9 56%,
+          #ff9ec8 78%,
+          #ff85bc 100%
+        );
+      }
+
+      .login-gate[hidden] {
+        display: none;
+      }
+
+      .login-gate.login-gate--unlocked {
+        position: relative;
+        inset: auto;
+        z-index: 1;
+        overflow: visible;
+        background: transparent;
+      }
+
+      .login-gate.login-gate--unlocked .login-gate__login {
+        display: none;
+      }
+
+      .login-gate__cake {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login-gate__cake img {
+        width: auto;
+        height: auto;
+        max-width: min(calc(100vw - 8px), 2200px, 122vmin);
+        max-height: min(98dvh, 1800px, 118vmin);
+        object-fit: contain;
+        opacity: 0.92;
+        filter: saturate(1.06) contrast(1.04);
+      }
+
+      .login-gate__gau {
+        position: fixed;
+        left: clamp(6px, 2.5vw, 32px);
+        top: clamp(48px, 8dvh, 100px);
+        pointer-events: none;
+      }
+
+      .login-gate__gau img {
+        width: auto;
+        height: auto;
+        max-width: min(72vw, 640px, 92vmin);
+        max-height: min(62dvh, 760px, 85vmin);
+        object-fit: contain;
+        opacity: 0.92;
+      }
+
+      .login-gate__shell {
+        position: relative;
+        z-index: 1;
+        width: min(900px, calc(100% - 48px));
+        margin: 0 auto;
+        padding: 24px 0 36px;
+      }
+
+      .login-gate__lang {
+        position: fixed;
+        top: clamp(12px, 3vw, 20px);
+        right: clamp(12px, 3vw, 24px);
+        z-index: 3;
+      }
+
+      .login-gate__lang-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border: 1px solid #f0b7d4;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.86);
+        color: #9d3368;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .login-gate__lang-btn img {
+        width: 38px;
+        height: 38px;
+      }
+
+      .login-gate__lang-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 160px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: #fffafc;
+        border: 1px solid #ffd1e7;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .login-gate__lang-menu[hidden] {
+        display: none;
+      }
+
+      .login-gate__lang-menu button {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 12px;
+        text-align: left;
+        cursor: pointer;
+        background: transparent;
+      }
+
+      .login-gate__lang-menu button:hover,
+      .login-gate__lang-menu button[aria-current="true"] {
+        background: #ffe8f2;
+        color: #c83579;
+      }
+
+      .login-gate__stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .login-gate__actions {
+        display: grid;
+        gap: 12px;
+        padding-block: clamp(12px, 3.2vw, 24px);
+      }
+
+      @media (min-width: 560px) {
+        .login-gate__actions {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .login-gate__action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 10px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--pink-4), var(--pink-5));
+        color: #fff;
+        text-decoration: none;
+        font-size: clamp(0.72rem, 1.4vw + 0.55rem, 0.9em);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .login-gate__action img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .login-gate__login {
+        width: min(800px, calc(100vw - 48px));
+        justify-self: center;
+        text-align: center;
+      }
+
+      .login-gate__login-title {
+        margin: 0 0 10px;
+        font-family: "Pacifico-Regular", "Segoe UI", cursive, sans-serif;
+        font-size: clamp(28px, 5.5vw, 40px);
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: 0.02em;
+        color: #c83579;
+        text-align: center;
+      }
+
+      .login-gate__login-sub {
+        margin: 0 0 20px;
+        color: #9d4a72;
+        text-align: center;
+      }
+
+      .login-gate__google {
+        margin: 16px auto 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 11px 20px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--pink-4), var(--pink-5));
+        color: #fff;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .login-gate__google img {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+        object-fit: contain;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-page-bg" aria-hidden="true"></div>
+    <section
+      class="login-gate"
+      id="loginGate"
+      aria-label="Đăng nhập trước khi tạo quà"
+    >
+      <div class="login-gate__cake" aria-hidden="true">
+        <img
+          src="./assets/icons/cakeBirthday.png"
+          alt=""
+          width="2200"
+          height="2200"
+          decoding="async"
+        />
+      </div>
+      <div class="login-gate__gau" aria-hidden="true">
+        <img
+          src="./assets/icons/gauBay.png"
+          alt=""
+          width="760"
+          height="760"
+          decoding="async"
+        />
+      </div>
+      <div class="login-gate__lang" id="lgLangWrap">
+        <button
+          type="button"
+          class="login-gate__lang-btn"
+          id="lgLangBtn"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-controls="lgLangMenu"
+        >
+          <img
+            src="./assets/icons/globe.png"
+            alt=""
+            width="38"
+            height="38"
+            aria-hidden="true"
+          />
+          <span data-lg-i18n="langButton">Ngôn ngữ</span>
+        </button>
+        <ul class="login-gate__lang-menu" id="lgLangMenu" role="listbox" hidden>
+          <li role="none">
+            <button
+              type="button"
+              role="option"
+              data-lg-lang="vi"
+              aria-current="true"
+            >
+              Tiếng Việt
+            </button>
+          </li>
+          <li role="none">
+            <button type="button" role="option" data-lg-lang="en">
+              English
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="login-gate__shell">
+        <div class="login-gate__stack">
+          <div class="page-hero">
+            <div class="page-hero-title"><h1>Birthday Gift</h1></div>
+            <p data-lg-i18n="tagline">Tạo quà xinh - Gửi trọn yêu thương</p>
+          </div>
+
+          <div class="login-gate__actions">
+            <a
+              class="login-gate__action"
+              href="./index.html?mode=demo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./assets/icons/eye.png"
+                alt=""
+                width="30"
+                height="30"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <span data-lg-i18n="btnFullDemo">Xem mẫu đầy đủ</span>
+            </a>
+            <a class="login-gate__action" href="#createForm">
+              <img
+                src="./assets/icons/video.png"
+                alt=""
+                width="30"
+                height="30"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <span data-lg-i18n="btnGuide">Xem hướng dẫn tạo</span>
+            </a>
+          </div>
+
+          <section class="card login-gate__login">
+            <h2 class="login-gate__login-title" data-lg-i18n="loginHeading">
+              Đăng nhập
+            </h2>
+            <p class="login-gate__login-sub" data-lg-i18n="loginSub">
+              Đăng nhập để tạo món quà Birthday của riêng bạn
+            </p>
+            <button type="button" class="login-gate__google" id="btnGateGoogle">
+              <img
+                src="./assets/icons/loginGG.png"
+                alt=""
+                width="26"
+                height="26"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <span data-lg-i18n="btnGoogle">Đăng nhập với Google</span>
+            </button>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="header">
+        <div class="mail">
+          <code id="userEmail">—</code>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="btn btn-history" id="historyOrderBtn">
+            <img
+              src="./assets/icons/document.png"
+              alt=""
+              width="20"
+              height="20"
+              decoding="async"
+              aria-hidden="true"
+            />
+            <span id="historyOrderBtnText">Lịch sử đơn hàng</span>
+          </button>
+          <button type="button" class="btn btn-logout" id="logoutBtn">
+            <img
+              src="./assets/icons/logout.png"
+              alt=""
+              width="20"
+              height="20"
+              decoding="async"
+              aria-hidden="true"
+            />
+            <span id="logoutBtnText">Đăng xuất</span>
+          </button>
+        </div>
+      </div>
+
+      <form id="createForm" novalidate>
+        <section class="card">
+          <h2 id="titleIntro">Nội dung Intro</h2>
+          <p class="hint">
+            Nhập tên người nhận (tối đa 40 ký tự, không emoji/icon).
+          </p>
+          <div class="grid">
+            <div>
+              <label for="recipientName">Tên người nhận *</label>
+              <input
+                id="recipientName"
+                name="recipientName"
+                type="text"
+                maxlength="40"
+                placeholder="Ví dụ: My Love"
+                required
+              />
+              <div class="intro-demo-wrap">
+                <img
+                  src="./assets/imageTutorial/imageIntro.png"
+                  alt="Hình minh họa cho mục Intro"
+                  loading="lazy"
+                />
+              </div>
+              <div class="music-picker-wrap">
+                <label for="musicSampleSelect">
+                  Nhạc nền (phát xuyên suốt đến cuối)
+                </label>
+                <div class="music-picker-grid">
+                  <div>
+                    <select
+                      id="musicSampleSelect"
+                      name="musicSampleSelect"
+                      class="music-sample-select"
+                    >
+                      <option value="">Chọn nhạc mẫu</option>
+                      <option
+                        value="./assets/audios/Happy Birthday - Piano.mp3"
+                        data-music-i18n="hb-piano"
+                      >
+                        Happy Birthday — Piano
+                      </option>
+                      <option
+                        value="./assets/audios/Happy Birthday.mp3"
+                        data-music-i18n="hb-classic"
+                      >
+                        Happy Birthday
+                      </option>
+                      <option
+                        value="./assets/audios/Happy Birthday Remix.mp3"
+                        data-music-i18n="hb-remix"
+                      >
+                        Happy Birthday Remix
+                      </option>
+                      <option
+                        value="./assets/audios/Happy Birthday - Anthem Lights.mp3"
+                        data-music-i18n="hb-anthem"
+                      >
+                        Happy Birthday — Anthem Lights
+                      </option>
+                      <option
+                        value="./assets/audios/Happy Birthday - HIEUTHUHAI.mp3"
+                        data-music-i18n="hb-hieuthuhai"
+                      >
+                        Happy Birthday — HIEUTHUHAI
+                      </option>
+                      <option
+                        value="./assets/audios/Happy Birthday to You  - AMEE x Hoàng Dũng.mp3"
+                        data-music-i18n="hb-amee"
+                      >
+                        Happy Birthday to You — AMEE x Hoàng Dũng
+                      </option>
+                      <option
+                        value="./assets/audios/BIRTHDAY XINH IU.mp3"
+                        data-music-i18n="hb-xinh-iu"
+                      >
+                        BIRTHDAY XINH IU
+                      </option>
+                      <option
+                        value="./assets/audios/Khúc hát mừng sinh nhật - P.Đ.Tùng.mp3"
+                        data-music-i18n="vn-khuc-hat"
+                      >
+                        Khúc hát mừng sinh nhật — P.Đ.Tùng
+                      </option>
+                      <option
+                        value="./assets/audios/Đây là bài hát sinh nhật - Bùi Công Nam.mp3"
+                        data-music-i18n="vn-day-la-bai-hat"
+                      >
+                        Đây là bài hát sinh nhật — Bùi Công Nam
+                      </option>
+                    </select>
+                  </div>
+                  <div>
+                    <div class="music-file-picker">
+                      <input
+                        id="musicFileInput"
+                        name="musicFileInput"
+                        type="file"
+                        accept=".mp3,audio/mpeg"
+                        class="music-file-input"
+                        aria-label="Chọn file nhạc mp3 từ thiết bị"
+                      />
+                      <div class="music-file-actions">
+                        <div class="music-file-main">
+                          <button
+                            type="button"
+                            class="music-file-btn"
+                            id="musicFilePickBtn"
+                          >
+                            <img
+                              src="./assets/icons/music.png"
+                              alt=""
+                              aria-hidden="true"
+                            />
+                            Chọn file nhạc
+                          </button>
+                          <div class="music-file-hint" id="musicFileHint">
+                            Chọn file đuôi .mp3
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          class="music-guide-link"
+                          id="musicGuideBtn"
+                        >
+                          Hướng dẫn
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="music-preview-wrap" id="musicPreviewWrap" hidden>
+                  <div class="music-file-hint" id="musicPreviewHint"></div>
+                  <input
+                    id="musicPreviewProgress"
+                    class="music-preview-progress"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                  />
+                  <div class="music-preview-controls">
+                    <button
+                      type="button"
+                      id="musicPreviewToggleBtn"
+                      class="music-preview-play-btn"
+                    >
+                      <span id="musicPreviewToggleIcon" aria-hidden="true"
+                        >▶</span
+                      >
+                      <span id="musicPreviewToggleText">Nghe thử</span>
+                    </button>
+                    <span id="musicPreviewTime" class="music-preview-time"
+                      >00:00 / 00:00</span
+                    >
+                  </div>
+                  <audio id="musicPreviewPlayer" preload="metadata"></audio>
+                </div>
+                <div class="error" id="errMusic"></div>
+              </div>
+              <div class="error" id="errRecipient"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 id="titleAlbum">Nội dung album ảnh</h2>
+          <p class="hint">
+            Yêu cầu: tối thiểu 2 ảnh, tối đa 20 ảnh, và số lượng phải là số
+            chẵn. 3 cặp đầu miễn phí, từ cặp thứ 4 trở đi +5.000 đ mỗi cặp.
+          </p>
+          <div class="album-demo-wrap">
+            <img
+              src="./assets/imageTutorial/imageAlbum.png"
+              alt="Hình minh họa cho mục Nội dung cuốn sách"
+              loading="lazy"
+            />
+          </div>
+          <label>
+            Ảnh album *<span
+              class="album-price-note"
+              id="albumPriceNote"
+              hidden
+            ></span>
+          </label>
+          <div class="book-picker-row">
+            <input
+              id="bookImagesInput"
+              type="file"
+              accept="image/*"
+              multiple
+              aria-label="Chọn ảnh từ thiết bị"
+            />
+            <button
+              type="button"
+              class="btn btn-book-pick"
+              id="bookImagesPickBtn"
+            >
+              <img
+                src="./assets/icons/add-photo.png"
+                alt=""
+                width="20"
+                height="20"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <span id="bookImagesPickBtnText">Chọn ảnh từ thiết bị</span>
+            </button>
+            <span class="book-count-hint" id="bookImageCountHint"
+              >Chưa có ảnh nào.</span
+            >
+          </div>
+          <div
+            class="book-image-grid"
+            id="bookImageGrid"
+            aria-live="polite"
+          ></div>
+          <div class="error" id="errImages"></div>
+        </section>
+
+        <section class="card">
+          <h2 id="titleLetter">Nội dung thư</h2>
+          <p class="hint">
+            Tiêu đề và chữ ký: tùy chọn. Nội dung thư: bắt buộc.
+          </p>
+          <div class="grid">
+            <div>
+              <label for="letterTitle">Tiêu đề thư</label>
+              <input
+                id="letterTitle"
+                name="letterTitle"
+                type="text"
+                maxlength="120"
+                placeholder="Ví dụ: Em yêu à,"
+              />
+            </div>
+            <div>
+              <label for="letterBody">Nội dung thư *</label>
+              <textarea
+                id="letterBody"
+                name="letterBody"
+                placeholder="Nhập nội dung thư..."
+                required
+              ></textarea>
+              <div class="error" id="errBody"></div>
+            </div>
+            <div>
+              <label for="letterSignature">Chữ ký</label>
+              <input
+                id="letterSignature"
+                name="letterSignature"
+                type="text"
+                maxlength="120"
+                placeholder="Ví dụ: Yêu em nhiều hơn mỗi ngày."
+              />
+              <div class="letter-demo-wrap">
+                <img
+                  src="./assets/imageTutorial/imageLetter.png"
+                  alt="Hình minh họa cho mục Nội dung thư"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="gift-toggle-row">
+            <label class="checkbox-row" aria-label="Bật món quà cuối">
+              <input
+                id="enableFinalGift"
+                name="enableFinalGift"
+                type="checkbox"
+              />
+            </label>
+            <h2 id="titleFinalGift">Món quà cuối</h2>
+            <span class="gift-price-tag">(Giá 19.000 đ)</span>
+          </div>
+          <div id="giftWishesWrap" class="gift-wishes-wrap" hidden>
+            <p class="hint gift-image-source-note" id="giftImageSourceHint">
+              Ảnh xuất hiện trong màn hình này sẽ lấy từ album ảnh
+            </p>
+            <p class="hint" id="giftWishesMainHint">
+              Các câu chúc ngắn sẽ hiển thị trong màn quà cuối (tối thiểu 1, tối
+              đa 5).
+            </p>
+            <button
+              type="button"
+              id="applyGiftWishTemplatesBtn"
+              class="gift-add-btn"
+            >
+              Áp dụng câu chúc mẫu
+            </button>
+            <p class="hint gift-wishes-note">
+              Lưu ý: Mỗi lời chúc tối đa 28 ký tự, cho phép icon/emoji.
+            </p>
+            <div id="giftWishesList" class="gift-wishes-list"></div>
+            <button type="button" id="addGiftWishBtn" class="gift-add-btn">
+              <img src="./assets/icons/add.png" alt="" aria-hidden="true" />
+              Thêm câu chúc
+            </button>
+          </div>
+          <div class="gift-demo-wrap" id="giftDemoWrap">
+            <img
+              src="./assets/imageTutorial/imageFly.png"
+              alt="Hình minh họa cho mục Món quà cuối"
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 id="titlePayment">Thanh toán</h2>
+          <div class="payment-grid">
+            <div class="payment-kind">
+              <div class="payment-kind-heading">Phương thức thanh toán</div>
+              <div class="payment-method-cards">
+                <label
+                  class="checkbox-row payment-radio-row payment-method-card"
+                >
+                  <input
+                    type="radio"
+                    name="paymentKind"
+                    id="payKindBank"
+                    value="bank"
+                    checked
+                  />
+                  Ngân hàng (MB, Vietcombank, TP, …)
+                </label>
+                <label
+                  class="checkbox-row payment-radio-row payment-method-card"
+                >
+                  <input
+                    type="radio"
+                    name="paymentKind"
+                    id="payKindIntl"
+                    value="intl"
+                  />
+                  Thanh toán quốc tế (Visa Card)
+                </label>
+              </div>
+            </div>
+
+            <label class="checkbox-row permanent-save-label">
+              <input
+                id="enablePermanentSave"
+                name="enablePermanentSave"
+                type="checkbox"
+              />
+              Lưu giữ món quà vĩnh viễn (phí 19.000 đ — nếu không chọn, quà tặng sẽ bị vô hiệu hóa sau 1 tháng)
+            </label>
+
+            <div class="price-summary">
+              <div class="price-line">
+                <span id="labelBasePrice">Giá gốc (album ảnh + thư + nhạc)</span>
+                <strong id="basePriceText">39.000 đ</strong>
+              </div>
+              <div class="price-line">
+                <span id="labelGiftPrice">Món quà cuối</span>
+                <strong id="giftPriceText">0 đ</strong>
+              </div>
+              <div class="price-line" id="extraImagePriceLine" hidden>
+                <span id="labelExtraImagePrice">Ảnh thêm</span>
+                <strong id="extraImagePriceText">0 đ</strong>
+              </div>
+              <div class="price-line">
+                <span id="labelPermanentPrice">Lưu vĩnh viễn</span>
+                <strong id="permanentPriceText">0 đ</strong>
+              </div>
+              <div class="price-divider" aria-hidden="true"></div>
+              <div class="price-line">
+                <span id="labelTotalPrice"><strong>Tổng tiền</strong></span>
+                <strong id="totalPriceText">25.000 đ</strong>
+              </div>
+            </div>
+
+            <div class="payment-actions">
+              <button
+                type="button"
+                class="btn btn-preview"
+                id="previewOrderBtn"
+              >
+                <img
+                  src="./assets/icons/eye.png"
+                  alt=""
+                  width="22"
+                  height="22"
+                  decoding="async"
+                  aria-hidden="true"
+                />
+                <span id="previewOrderBtnText">Xem trước</span>
+              </button>
+              <button type="button" class="btn btn-pay" id="payNowBtn">
+                <img
+                  src="./assets/icons/credit-card.png"
+                  alt=""
+                  width="22"
+                  height="22"
+                  decoding="async"
+                  aria-hidden="true"
+                />
+                <span id="payNowBtnText">Thanh toán ngay</span>
+              </button>
+            </div>
+          </div>
+          <p class="payment-note">
+            <img
+              src="./assets/icons/warning.png"
+              alt=""
+              width="16"
+              height="16"
+              decoding="async"
+              aria-hidden="true"
+            />
+            <span class="payment-note-content">
+              <strong id="paymentNoteStrong">Lưu ý:</strong>
+              <span id="paymentNotePrefix"
+                >Nếu không nhận được kết quả sau khi đã thanh toán thành công.
+                Hãy tự kiểm tra</span
+              >
+              <button
+                type="button"
+                class="inline-history-link"
+                id="historyInlineBtn"
+              >
+                Lịch sử đơn hàng
+              </button>
+              <span id="paymentNoteSuffix">ở trên đầu trang tạo.</span>
+            </span>
+          </p>
+          <div class="contact-note">
+            <p class="contact-note-title">
+              <img
+                src="./assets/icons/telephone.png"
+                alt=""
+                width="18"
+                height="18"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <span id="contactNoteTitleText">Liên hệ khi gặp lỗi</span>
+            </p>
+            <div class="contact-icons" aria-label="Kênh liên hệ">
+              <a
+                class="social-icon"
+                href="https://zalo.me/0365810365"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Liên hệ Zalo"
+                aria-label="Mở Zalo để liên hệ"
+              >
+                <img
+                  src="./assets/icons/iconzalo.png"
+                  alt="Icon Zalo"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                class="social-icon"
+                href="https://www.tiktok.com/@duyheartly"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="TikTok @duyheartly"
+                aria-label="Mở TikTok @duyheartly"
+              >
+                <img
+                  src="./assets/icons/icontiktok.png"
+                  alt="Icon TikTok"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <p class="contact-note-text">
+              Hãy follow TikTok mình để theo dõi và nhận thông báo khi có sản
+              phẩm mới nhất nhé.
+            </p>
+          </div>
+        </section>
+      </form>
+    </div>
+
+    <dialog class="order-history-dialog" id="orderHistoryDialog">
+      <div class="order-history-content">
+        <div class="order-history-head">
+          <h3 id="orderHistoryTitle">Lịch sử đơn hàng</h3>
+          <button
+            type="button"
+            class="btn-close-history"
+            id="closeHistoryDialogBtn"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <div class="order-history-loading" id="orderHistoryLoading" hidden>
+          <p id="orderHistoryLoadingText">Đang tải danh sách…</p>
+        </div>
+        <div class="order-history-error" id="orderHistoryError" hidden>
+          <p id="orderHistoryErrorText"></p>
+        </div>
+        <div class="order-history-list" id="orderHistoryList" hidden></div>
+        <div class="order-history-empty" id="orderHistoryEmpty" hidden>
+          <img
+            src="./assets/icons/mailbox.png"
+            alt="Không có đơn hàng"
+            loading="lazy"
+          />
+          <p>Chưa có đơn hàng nào được tạo.</p>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="order-history-dialog" id="paymentSuccessOrderDialog">
+      <div class="order-history-content">
+        <div class="order-history-head">
+          <h3 id="paymentSuccessOrderTitle">Thanh toán thành công</h3>
+          <button
+            type="button"
+            class="btn-close-history"
+            id="closePaymentSuccessOrderBtn"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <div
+          class="order-history-loading"
+          id="paymentSuccessOrderLoading"
+          hidden
+        >
+          <p id="paymentSuccessOrderLoadingText">Đang tải thông tin đơn…</p>
+        </div>
+        <div class="order-history-error" id="paymentSuccessOrderError" hidden>
+          <p id="paymentSuccessOrderErrorText"></p>
+        </div>
+        <div
+          class="order-history-list"
+          id="paymentSuccessOrderCardWrap"
+          hidden
+        ></div>
+      </div>
+    </dialog>
+
+    <dialog class="music-guide-dialog" id="musicGuideDialog">
+      <div class="music-guide-content">
+        <div class="music-guide-head">
+          <h3 id="musicGuideTitle">Hướng dẫn chuyển đổi video/link sang MP3</h3>
+          <button
+            type="button"
+            class="btn-close-history"
+            id="closeMusicGuideDialogBtn"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <div class="music-guide-body">
+          <div class="music-guide-item">
+            <p id="musicGuideIntro">
+              Nếu chưa có sẵn file MP3, bạn có thể tải MP3 về, hoặc muốn đổi
+              video từ TikTok hay YouTube thì làm theo hướng dẫn bên dưới:
+            </p>
+          </div>
+          <div class="music-guide-item">
+            <p>
+              <strong class="music-guide-platform">
+                <img
+                  src="./assets/icons/youtube.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                Youtube
+              </strong>
+            </p>
+            <p id="musicGuideYtStep1">
+              1. Truy cập:
+              <a
+                class="music-guide-url"
+                href="https://y2mate.sc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://www.y2mate.sc</a
+              >
+            </p>
+            <p id="musicGuideYtStep2">2. Dán link YouTube vào ô tìm kiếm</p>
+            <p id="musicGuideYtStep3">3. Chọn định dạng MP3 và tải về</p>
+          </div>
+          <div class="music-guide-item">
+            <p>
+              <strong class="music-guide-platform">
+                <img
+                  src="./assets/icons/icontiktok.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                Tiktok
+              </strong>
+            </p>
+            <p id="musicGuideTkStep1">
+              1. Truy cập:
+              <a
+                class="music-guide-url"
+                href="https://savetik.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://savetik.io</a
+              >
+            </p>
+            <p id="musicGuideTkStep2">2. Dán link TikTok vào ô tìm kiếm</p>
+            <p id="musicGuideTkStep3">3. Chọn tải MP3 và tải về</p>
+          </div>
+          <div class="music-guide-item">
+            <p id="musicGuideTip">
+              <strong>💡 Lưu ý:</strong> Sau khi tải file MP3 về, bạn có thể
+              chọn file đó trong phần "Chọn file nhạc" ở trên.
+            </p>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="missing-required-dialog" id="missingRequiredDialog">
+      <div class="missing-required-content">
+        <div class="missing-required-head">
+          <h3 id="missingRequiredTitle">
+            Chưa thể thanh toán — vui lòng kiểm tra và bổ sung các mục sau:
+          </h3>
+          <button
+            type="button"
+            class="btn-close-history"
+            id="closeMissingRequiredDialogBtn"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <ul class="missing-required-list" id="missingRequiredList"></ul>
+        <div class="missing-required-foot">
+          <button
+            type="button"
+            class="btn btn-preview"
+            id="confirmMissingRequiredBtn"
+          >
+            Tôi đã hiểu
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="missing-required-dialog" id="tiktokFollowQrDialog">
+      <div class="missing-required-content">
+        <div class="missing-required-head">
+          <h3 id="tiktokFollowQrTitle">Thông báo</h3>
+          <button
+            type="button"
+            class="btn-close-history"
+            id="closeTiktokFollowQrBtn"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <p class="tiktok-follow-qr-msg" id="tiktokFollowQrMsg"></p>
+        <div class="missing-required-foot">
+          <button
+            type="button"
+            class="btn btn-preview"
+            id="tiktokFollowQrOkBtn"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      (function () {
+        const gate = document.getElementById("loginGate");
+        const gateBtn = document.getElementById("btnGateGoogle");
+        const langWrap = document.getElementById("lgLangWrap");
+        const langBtn = document.getElementById("lgLangBtn");
+        const langMenu = document.getElementById("lgLangMenu");
+        const STORAGE_KEY = "hbCreateGateLang";
+
+        const STR = {
+          vi: {
+            langButton: "Ngôn ngữ",
+            tagline: "Tạo quà xinh - Gửi trọn yêu thương",
+            btnFullDemo: "Xem mẫu đầy đủ",
+            btnGuide: "Xem hướng dẫn tạo",
+            loginHeading: "Đăng nhập",
+            loginSub: "Đăng nhập để tạo món quà Birthday của riêng bạn",
+            btnGoogle: "Đăng nhập với Google",
+            create: {
+              historyOrderBtnText: "Lịch sử đơn hàng",
+              historyInlineBtn: "Lịch sử đơn hàng",
+              logoutBtnText: "Đăng xuất",
+              titleIntro: "Nội dung Intro",
+              titleAlbum: "Nội dung album ảnh",
+              titleLetter: "Nội dung thư",
+              titleFinalGift: "Món quà cuối",
+              titlePayment: "Thanh toán",
+              applyGiftWishTemplatesBtn: "Áp dụng câu chúc mẫu",
+              addGiftWishBtn: "Thêm câu chúc",
+              previewOrderBtnText: "Xem trước",
+              payNowBtnText: "Thanh toán ngay",
+              orderHistoryTitle: "Lịch sử đơn hàng",
+              musicGuideTitle: "Hướng dẫn chuyển đổi video/link sang MP3",
+              missingRequiredTitle:
+                "Chưa thể thanh toán — vui lòng kiểm tra và bổ sung các mục sau:",
+              confirmMissingRequiredBtn: "Tôi đã hiểu",
+              labelBasePrice: "Giá gốc (album ảnh + thư + nhạc)",
+              labelGiftPrice: "Món quà cuối",
+              labelExtraImagePrice: "Ảnh thêm",
+              labelPermanentPrice: "Lưu vĩnh viễn",
+              labelTotalPrice: "<strong>Tổng tiền</strong>",
+            },
+          },
+          en: {
+            langButton: "Language",
+            tagline: "Lovely gifts - Send love your way",
+            btnFullDemo: "Full demo",
+            btnGuide: "Creation guide",
+            loginHeading: "Sign in",
+            loginSub: "Sign in to create your own Birthday gift",
+            btnGoogle: "Sign in with Google",
+            create: {
+              historyOrderBtnText: "Order history",
+              historyInlineBtn: "Order history",
+              logoutBtnText: "Log out",
+              titleIntro: "Intro content",
+              titleAlbum: "Photo album content",
+              titleLetter: "Letter content",
+              titleFinalGift: "Final gift",
+              titlePayment: "Payment",
+              applyGiftWishTemplatesBtn: "Apply sample wishes",
+              addGiftWishBtn: "Add wish",
+              previewOrderBtnText: "Preview",
+              payNowBtnText: "Pay now",
+              orderHistoryTitle: "Order history",
+              musicGuideTitle: "Guide to convert video/link to MP3",
+              missingRequiredTitle:
+                "Cannot pay yet — please review and fix the items below:",
+              confirmMissingRequiredBtn: "I understand",
+              labelBasePrice: "Base price (album + letter + music)",
+              labelGiftPrice: "Final gift",
+              labelExtraImagePrice: "Extra images",
+              labelPermanentPrice: "Permanent storage",
+              labelTotalPrice: "<strong>Total</strong>",
+            },
+          },
+        };
+
+        function normalizeLang(v) {
+          return v === "en" ? "en" : "vi";
+        }
+
+        function applyLang(lang) {
+          const t = STR[normalizeLang(lang)];
+          document.querySelectorAll("[data-lg-i18n]").forEach((el) => {
+            const key = el.getAttribute("data-lg-i18n");
+            if (key && t[key]) el.textContent = t[key];
+          });
+          const createMap = t.create || {};
+          Object.keys(createMap).forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (id === "labelTotalPrice") el.innerHTML = createMap[id];
+            else el.textContent = createMap[id];
+          });
+          const setText = (selector, value) => {
+            const el = document.querySelector(selector);
+            if (el) el.textContent = value;
+          };
+          const setHtml = (selector, value) => {
+            const el = document.querySelector(selector);
+            if (el) el.innerHTML = value;
+          };
+          const setAttr = (selector, attr, value) => {
+            const el = document.querySelector(selector);
+            if (el) el.setAttribute(attr, value);
+          };
+          const setLabelWithInput = (selector, text) => {
+            const el = document.querySelector(selector);
+            if (!el) return;
+            const input = el.querySelector("input");
+            if (!input) {
+              el.textContent = text;
+              return;
+            }
+            Array.from(el.childNodes).forEach((n) => {
+              if (n.nodeType === Node.TEXT_NODE) {
+                el.removeChild(n);
+              }
+            });
+            input.insertAdjacentText("afterend", " " + text);
+          };
+
+          if (normalizeLang(lang) === "en") {
+            document.title = "Create Birthday Gift";
+            setText(
+              "#titleIntro + .hint",
+              "Enter recipient name (max 40 chars, no emoji/icon).",
+            );
+            setText('label[for="recipientName"]', "Recipient name *");
+            setAttr("#recipientName", "placeholder", "Example: My Love");
+            setText(
+              'label[for="musicSampleSelect"]',
+              "Background music (plays across the whole gift)",
+            );
+            setText(
+              '#musicSampleSelect option[value=""]',
+              "Choose sample track",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-piano"]',
+              "Happy Birthday — Piano",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-classic"]',
+              "Happy Birthday",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-remix"]',
+              "Happy Birthday Remix",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-anthem"]',
+              "Happy Birthday — Anthem Lights",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-hieuthuhai"]',
+              "Happy Birthday — HIEUTHUHAI",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-amee"]',
+              "Happy Birthday to You — AMEE x Hoàng Dũng",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-xinh-iu"]',
+              "BIRTHDAY XINH IU",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="vn-khuc-hat"]',
+              "Birthday song — P.Đ.Tùng",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="vn-day-la-bai-hat"]',
+              "This is a birthday song — Bùi Công Nam",
+            );
+            setAttr(
+              "#musicFileInput",
+              "aria-label",
+              "Choose mp3 file from device",
+            );
+            setHtml(
+              "#musicFilePickBtn",
+              '<img src="./assets/icons/music.png" alt="" aria-hidden="true" />Choose music file',
+            );
+            setText("#musicFileHint", "Choose .mp3 file");
+            setText("#musicGuideBtn", "Guide");
+            setText("#musicPreviewToggleText", "Preview");
+            setText(
+              "#titleAlbum + .hint",
+              "Requirement: minimum 2 images, maximum 20 images, and the number must be even. Only the first pair (first 2 images) is free; from the second pair onward, +5,000 VND per pair.",
+            );
+            setAttr(
+              "#bookImagesInput",
+              "aria-label",
+              "Choose images from device",
+            );
+            setText("#bookImagesPickBtnText", "Choose images from device");
+            setText("#bookImageCountHint", "No image selected.");
+            setText(
+              "#titleLetter + .hint",
+              "Letter title and signature: optional. Letter body: required.",
+            );
+            setText('label[for="letterTitle"]', "Letter title");
+            setAttr("#letterTitle", "placeholder", "Example: My love,");
+            setText('label[for="letterBody"]', "Letter body *");
+            setAttr("#letterBody", "placeholder", "Enter letter content...");
+            setText('label[for="letterSignature"]', "Signature");
+            setAttr(
+              "#letterSignature",
+              "placeholder",
+              "Example: Love you more each day.",
+            );
+            setAttr(
+              ".gift-toggle-row .checkbox-row",
+              "aria-label",
+              "Enable final gift",
+            );
+            setText(".gift-price-tag", "(Price 19,000 VND)");
+            setText(
+              "#giftImageSourceHint",
+              "Images shown in this screen are taken from the photo book.",
+            );
+            setText(
+              "#giftWishesMainHint",
+              "Short wishes will be shown in the final gift scene (min 1, max 5).",
+            );
+            setText("#applyGiftWishTemplatesBtn", "Apply sample wishes");
+            setText(
+              ".gift-wishes-note",
+              "Note: each wish max 28 chars, emoji/icon allowed.",
+            );
+            setHtml(
+              "#addGiftWishBtn",
+              '<img src="./assets/icons/add.png" alt="" aria-hidden="true" />Add wish',
+            );
+            setText(".payment-kind-heading", "Payment method");
+            setText(
+              'label[for="payKindBank"]',
+              "Bank (MB, Vietcombank, TP, ...)",
+            );
+            setText(
+              'label[for="payKindIntl"]',
+              "International payment (Visa Card)",
+            );
+            setLabelWithInput(
+              ".permanent-save-label",
+              "Permanently save your gift (19,000 VND fee — if not selected, the gift will be disabled after 1 month)",
+            );
+            setText("#paymentNoteStrong", "Note:");
+            setText(
+              "#paymentNotePrefix",
+              "If you do not receive the result after successful payment, please check",
+            );
+            setText("#historyInlineBtn", "Order history");
+            setText("#paymentNoteSuffix", "at the top of the create page.");
+            setText("#contactNoteTitleText", "Contact when errors occur");
+            setAttr(".contact-icons", "aria-label", "Contact channels");
+            setAttr(
+              'a[href="https://zalo.me/0365810365"]',
+              "title",
+              "Contact Zalo",
+            );
+            setAttr(
+              'a[href="https://zalo.me/0365810365"]',
+              "aria-label",
+              "Open Zalo to contact",
+            );
+            setAttr(
+              'a[href="https://www.tiktok.com/@duyheartly"]',
+              "aria-label",
+              "Open TikTok @duyheartly",
+            );
+            setText(
+              ".contact-note-text",
+              "Follow my TikTok for updates and latest products.",
+            );
+            setAttr("#closeHistoryDialogBtn", "aria-label", "Close");
+            setText(".order-history-empty p", "No order has been created yet.");
+            setText("#orderHistoryLoadingText", "Loading orders…");
+            setText("#paymentSuccessOrderTitle", "Payment successful");
+            setText("#paymentSuccessOrderLoadingText", "Loading order…");
+            setAttr("#closePaymentSuccessOrderBtn", "aria-label", "Close");
+            setAttr("#closeMusicGuideDialogBtn", "aria-label", "Close");
+            setText(
+              "#musicGuideIntro",
+              "If you do not have an MP3 file yet, you can download one, or convert from TikTok/YouTube by following the guide below:",
+            );
+            setHtml(
+              "#musicGuideYtStep1",
+              '1. Visit: <a class="music-guide-url" href="https://y2mate.sc/" target="_blank" rel="noopener noreferrer">https://www.y2mate.sc</a>',
+            );
+            setText(
+              "#musicGuideYtStep2",
+              "2. Paste the YouTube link into the search box",
+            );
+            setText("#musicGuideYtStep3", "3. Choose MP3 format and download");
+            setHtml(
+              "#musicGuideTkStep1",
+              '1. Visit: <a class="music-guide-url" href="https://savetik.io" target="_blank" rel="noopener noreferrer">https://savetik.io</a>',
+            );
+            setText(
+              "#musicGuideTkStep2",
+              "2. Paste the TikTok link into the search box",
+            );
+            setText("#musicGuideTkStep3", "3. Choose MP3 and download");
+            setHtml(
+              "#musicGuideTip",
+              '<strong>💡 Note:</strong> After downloading the MP3 file, you can choose it in the "Choose music file" section above.',
+            );
+            setAttr("#closeMissingRequiredDialogBtn", "aria-label", "Close");
+          } else {
+            document.title = "Tạo Nội Dung Quà Sinh Nhật";
+            setText(
+              "#titleIntro + .hint",
+              "Nhập tên người nhận (tối đa 40 ký tự, không emoji/icon).",
+            );
+            setText('label[for="recipientName"]', "Tên người nhận *");
+            setAttr("#recipientName", "placeholder", "Ví dụ: My Love");
+            setText(
+              'label[for="musicSampleSelect"]',
+              "Nhạc nền (phát xuyên suốt đến cuối)",
+            );
+            setText('#musicSampleSelect option[value=""]', "Chọn nhạc mẫu");
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-piano"]',
+              "Happy Birthday — Piano",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-classic"]',
+              "Happy Birthday",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-remix"]',
+              "Happy Birthday Remix",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-anthem"]',
+              "Happy Birthday — Anthem Lights",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-hieuthuhai"]',
+              "Happy Birthday — HIEUTHUHAI",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-amee"]',
+              "Happy Birthday to You — AMEE x Hoàng Dũng",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="hb-xinh-iu"]',
+              "BIRTHDAY XINH IU",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="vn-khuc-hat"]',
+              "Khúc hát mừng sinh nhật — P.Đ.Tùng",
+            );
+            setText(
+              '#musicSampleSelect option[data-music-i18n="vn-day-la-bai-hat"]',
+              "Đây là bài hát sinh nhật — Bùi Công Nam",
+            );
+            setAttr(
+              "#musicFileInput",
+              "aria-label",
+              "Chọn file nhạc mp3 từ thiết bị",
+            );
+            setHtml(
+              "#musicFilePickBtn",
+              '<img src="./assets/icons/music.png" alt="" aria-hidden="true" />Chọn file nhạc',
+            );
+            setText("#musicFileHint", "Chọn file đuôi .mp3");
+            setText("#musicGuideBtn", "Hướng dẫn");
+            setText("#musicPreviewToggleText", "Nghe thử");
+            setText(
+              "#titleAlbum + .hint",
+              "Yêu cầu: tối thiểu 2 ảnh, tối đa 20 ảnh, và số lượng phải là số chẵn. 3 cặp đầu miễn phí, từ cặp thứ 4 trở đi +5.000 đ mỗi cặp.",
+            );
+            setAttr("#bookImagesInput", "aria-label", "Chọn ảnh từ thiết bị");
+            setText("#bookImagesPickBtnText", "Chọn ảnh từ thiết bị");
+            setText("#bookImageCountHint", "Chưa có ảnh nào.");
+            setText(
+              "#titleLetter + .hint",
+              "Tiêu đề và chữ ký: tùy chọn. Nội dung thư: bắt buộc.",
+            );
+            setText('label[for="letterTitle"]', "Tiêu đề thư");
+            setAttr("#letterTitle", "placeholder", "Ví dụ: Em yêu à,");
+            setText('label[for="letterBody"]', "Nội dung thư *");
+            setAttr("#letterBody", "placeholder", "Nhập nội dung thư...");
+            setText('label[for="letterSignature"]', "Chữ ký");
+            setAttr(
+              "#letterSignature",
+              "placeholder",
+              "Ví dụ: Yêu em nhiều hơn mỗi ngày.",
+            );
+            setAttr(
+              ".gift-toggle-row .checkbox-row",
+              "aria-label",
+              "Bật món quà cuối",
+            );
+            setText(".gift-price-tag", "(Giá 19.000 đ)");
+            setText(
+              "#giftImageSourceHint",
+              "Ảnh xuất hiện trong màn hình này sẽ lấy từ album ảnh",
+            );
+            setText(
+              "#giftWishesMainHint",
+              "Các câu chúc ngắn sẽ hiển thị trong màn quà cuối (tối thiểu 1, tối đa 5).",
+            );
+            setText("#applyGiftWishTemplatesBtn", "Áp dụng câu chúc mẫu");
+            setText(
+              ".gift-wishes-note",
+              "Lưu ý: Mỗi lời chúc tối đa 28 ký tự, cho phép icon/emoji.",
+            );
+            setHtml(
+              "#addGiftWishBtn",
+              '<img src="./assets/icons/add.png" alt="" aria-hidden="true" />Thêm câu chúc',
+            );
+            setText(".payment-kind-heading", "Phương thức thanh toán");
+            setText(
+              'label[for="payKindBank"]',
+              "Ngân hàng (MB, Vietcombank, TP, …)",
+            );
+            setText(
+              'label[for="payKindIntl"]',
+              "Thanh toán quốc tế (Visa Card)",
+            );
+            setLabelWithInput(
+              ".permanent-save-label",
+              "Lưu giữ món quà vĩnh viễn (phí 19.000 đ — nếu không chọn, quà tặng sẽ bị vô hiệu hóa sau 1 tháng)",
+            );
+            setText("#paymentNoteStrong", "Lưu ý:");
+            setText(
+              "#paymentNotePrefix",
+              "Nếu không nhận được kết quả sau khi đã thanh toán thành công. Hãy tự kiểm tra",
+            );
+            setText("#historyInlineBtn", "Lịch sử đơn hàng");
+            setText("#paymentNoteSuffix", "ở trên đầu trang tạo.");
+            setText("#contactNoteTitleText", "Liên hệ khi gặp lỗi");
+            setAttr(".contact-icons", "aria-label", "Kênh liên hệ");
+            setAttr(
+              'a[href="https://zalo.me/0365810365"]',
+              "title",
+              "Liên hệ Zalo",
+            );
+            setAttr(
+              'a[href="https://zalo.me/0365810365"]',
+              "aria-label",
+              "Mở Zalo để liên hệ",
+            );
+            setAttr(
+              'a[href="https://www.tiktok.com/@duyheartly"]',
+              "aria-label",
+              "Mở TikTok @duyheartly",
+            );
+            setText(
+              ".contact-note-text",
+              "Hãy follow TikTok mình để theo dõi và nhận thông báo khi có sản phẩm mới nhất nhé.",
+            );
+            setAttr("#closeHistoryDialogBtn", "aria-label", "Đóng");
+            setText(".order-history-empty p", "Chưa có đơn hàng nào được tạo.");
+            setText("#orderHistoryLoadingText", "Đang tải danh sách…");
+            setText("#paymentSuccessOrderTitle", "Thanh toán thành công");
+            setText("#paymentSuccessOrderLoadingText", "Đang tải thông tin đơn…");
+            setAttr("#closePaymentSuccessOrderBtn", "aria-label", "Đóng");
+            setAttr("#closeMusicGuideDialogBtn", "aria-label", "Đóng");
+            setText(
+              "#musicGuideIntro",
+              "Nếu chưa có sẵn file MP3, bạn có thể tải MP3 về, hoặc muốn đổi video từ TikTok hay YouTube thì làm theo hướng dẫn bên dưới:",
+            );
+            setHtml(
+              "#musicGuideYtStep1",
+              '1. Truy cập: <a class="music-guide-url" href="https://y2mate.sc/" target="_blank" rel="noopener noreferrer">https://www.y2mate.sc</a>',
+            );
+            setText("#musicGuideYtStep2", "2. Dán link YouTube vào ô tìm kiếm");
+            setText("#musicGuideYtStep3", "3. Chọn định dạng MP3 và tải về");
+            setHtml(
+              "#musicGuideTkStep1",
+              '1. Truy cập: <a class="music-guide-url" href="https://savetik.io" target="_blank" rel="noopener noreferrer">https://savetik.io</a>',
+            );
+            setText("#musicGuideTkStep2", "2. Dán link TikTok vào ô tìm kiếm");
+            setText("#musicGuideTkStep3", "3. Chọn tải MP3 và tải về");
+            setHtml(
+              "#musicGuideTip",
+              '<strong>💡 Lưu ý:</strong> Sau khi tải file MP3 về, bạn có thể chọn file đó trong phần "Chọn file nhạc" ở trên.',
+            );
+            setAttr("#closeMissingRequiredDialogBtn", "aria-label", "Đóng");
+          }
+          langMenu?.querySelectorAll("button[data-lg-lang]").forEach((btn) => {
+            btn.setAttribute(
+              "aria-current",
+              btn.getAttribute("data-lg-lang") === normalizeLang(lang)
+                ? "true"
+                : "false",
+            );
+          });
+          window.__HB_CREATE_LANG = normalizeLang(lang);
+        }
+
+        function hideGate() {
+          if (!gate) return;
+          gate.classList.add("login-gate--unlocked");
+        }
+
+        const savedLang = (() => {
+          try {
+            return normalizeLang(localStorage.getItem(STORAGE_KEY) || "");
+          } catch (_) {
+            return "vi";
+          }
+        })();
+        applyLang(savedLang);
+
+        langBtn?.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (!langMenu) return;
+          const open = langMenu.hidden;
+          langMenu.hidden = !open;
+          langBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        langMenu?.addEventListener("click", (e) => {
+          const btn = e.target.closest("button[data-lg-lang]");
+          if (!btn) return;
+          const lang = normalizeLang(btn.getAttribute("data-lg-lang"));
+          try {
+            localStorage.setItem(STORAGE_KEY, lang);
+          } catch (_) {}
+          applyLang(lang);
+          langMenu.hidden = true;
+          langBtn?.setAttribute("aria-expanded", "false");
+        });
+        document.addEventListener("click", () => {
+          if (!langMenu) return;
+          langMenu.hidden = true;
+          langBtn?.setAttribute("aria-expanded", "false");
+        });
+        langWrap?.addEventListener("click", (e) => e.stopPropagation());
+      })();
+    </script>
+
+    <script>
+      const form = document.getElementById("createForm");
+      const historyOrderBtn = document.getElementById("historyOrderBtn");
+      const historyInlineBtn = document.getElementById("historyInlineBtn");
+      const orderHistoryDialog = document.getElementById("orderHistoryDialog");
+      const closeHistoryDialogBtn = document.getElementById(
+        "closeHistoryDialogBtn",
+      );
+      const orderHistoryList = document.getElementById("orderHistoryList");
+      const orderHistoryEmpty = document.getElementById("orderHistoryEmpty");
+      const orderHistoryLoading = document.getElementById(
+        "orderHistoryLoading",
+      );
+      const orderHistoryError = document.getElementById("orderHistoryError");
+      const orderHistoryErrorText = document.getElementById(
+        "orderHistoryErrorText",
+      );
+      const paymentSuccessOrderDialog = document.getElementById(
+        "paymentSuccessOrderDialog",
+      );
+      const paymentSuccessOrderLoading = document.getElementById(
+        "paymentSuccessOrderLoading",
+      );
+      const paymentSuccessOrderLoadingText = document.getElementById(
+        "paymentSuccessOrderLoadingText",
+      );
+      const paymentSuccessOrderError = document.getElementById(
+        "paymentSuccessOrderError",
+      );
+      const paymentSuccessOrderErrorText = document.getElementById(
+        "paymentSuccessOrderErrorText",
+      );
+      const paymentSuccessOrderCardWrap = document.getElementById(
+        "paymentSuccessOrderCardWrap",
+      );
+      const closePaymentSuccessOrderBtn = document.getElementById(
+        "closePaymentSuccessOrderBtn",
+      );
+      const recipient = document.getElementById("recipientName");
+      const musicSampleSelect = document.getElementById("musicSampleSelect");
+      const musicFileInput = document.getElementById("musicFileInput");
+      const musicFilePickBtn = document.getElementById("musicFilePickBtn");
+      const musicGuideBtn = document.getElementById("musicGuideBtn");
+      const musicGuideDialog = document.getElementById("musicGuideDialog");
+      const closeMusicGuideDialogBtn = document.getElementById(
+        "closeMusicGuideDialogBtn",
+      );
+      const missingRequiredDialog = document.getElementById(
+        "missingRequiredDialog",
+      );
+      const missingRequiredList = document.getElementById(
+        "missingRequiredList",
+      );
+      const closeMissingRequiredDialogBtn = document.getElementById(
+        "closeMissingRequiredDialogBtn",
+      );
+      const confirmMissingRequiredBtn = document.getElementById(
+        "confirmMissingRequiredBtn",
+      );
+      const tiktokFollowQrDialog = document.getElementById(
+        "tiktokFollowQrDialog",
+      );
+      const tiktokFollowQrTitle = document.getElementById("tiktokFollowQrTitle");
+      const tiktokFollowQrMsg = document.getElementById("tiktokFollowQrMsg");
+      const tiktokFollowQrOkBtn = document.getElementById("tiktokFollowQrOkBtn");
+      const closeTiktokFollowQrBtn = document.getElementById(
+        "closeTiktokFollowQrBtn",
+      );
+      const musicGuideLinks = document.querySelectorAll(".music-guide-url");
+      const musicFileHint = document.getElementById("musicFileHint");
+      const musicPreviewWrap = document.getElementById("musicPreviewWrap");
+      const musicPreviewHint = document.getElementById("musicPreviewHint");
+      const musicPreviewProgress = document.getElementById(
+        "musicPreviewProgress",
+      );
+      const musicPreviewToggleBtn = document.getElementById(
+        "musicPreviewToggleBtn",
+      );
+      const musicPreviewToggleIcon = document.getElementById(
+        "musicPreviewToggleIcon",
+      );
+      const musicPreviewToggleText = document.getElementById(
+        "musicPreviewToggleText",
+      );
+      const musicPreviewTime = document.getElementById("musicPreviewTime");
+      const musicPreviewPlayer = document.getElementById("musicPreviewPlayer");
+      const bookImagesInput = document.getElementById("bookImagesInput");
+      const bookImagesPickBtn = document.getElementById("bookImagesPickBtn");
+      const bookImageGrid = document.getElementById("bookImageGrid");
+      const bookImageCountHint = document.getElementById("bookImageCountHint");
+      const albumPriceNote = document.getElementById("albumPriceNote");
+      const body = document.getElementById("letterBody");
+      const enableFinalGift = document.getElementById("enableFinalGift");
+      const giftDemoWrap = document.getElementById("giftDemoWrap");
+      const giftWishesWrap = document.getElementById("giftWishesWrap");
+      const giftWishesList = document.getElementById("giftWishesList");
+      const addGiftWishBtn = document.getElementById("addGiftWishBtn");
+      const applyGiftWishTemplatesBtn = document.getElementById(
+        "applyGiftWishTemplatesBtn",
+      );
+      const enablePermanentSave = document.getElementById(
+        "enablePermanentSave",
+      );
+      const payKindBank = document.getElementById("payKindBank");
+      const payKindIntl = document.getElementById("payKindIntl");
+      const basePriceText = document.getElementById("basePriceText");
+      const giftPriceText = document.getElementById("giftPriceText");
+      const extraImagePriceLine = document.getElementById(
+        "extraImagePriceLine",
+      );
+      const extraImagePriceText = document.getElementById(
+        "extraImagePriceText",
+      );
+      const permanentPriceText = document.getElementById("permanentPriceText");
+      const totalPriceText = document.getElementById("totalPriceText");
+      const previewOrderBtn = document.getElementById("previewOrderBtn");
+      const previewOrderBtnText = document.getElementById(
+        "previewOrderBtnText",
+      );
+      const payNowBtn = document.getElementById("payNowBtn");
+
+      const errRecipient = document.getElementById("errRecipient");
+      const errMusic = document.getElementById("errMusic");
+      const errImages = document.getElementById("errImages");
+      const errBody = document.getElementById("errBody");
+
+      const MIN_BOOK_IMAGES = 2;
+      const MAX_BOOK_IMAGES = 20;
+      const MIN_GIFT_WISHES = 1;
+      const MAX_GIFT_WISHES = 5;
+      const GIFT_WISH_TEMPLATES = [
+        "Happy Birthday 💕",
+        "Yêu em nhất ❤️",
+        "Tuổi mới thật hạnh phúc 💖",
+      ];
+      const BASE_PRICE = 39000;
+      const FINAL_GIFT_PRICE = 19000;
+      const EXTRA_IMAGE_PAIR_PRICE = 5000;
+      const EXTRA_IMAGE_PAIR_START = 6;
+      const PERMANENT_PRICE = 19000;
+
+      /** @type {{ file: File, objectUrl: string }[]} */
+      let bookImageEntries = [];
+      /**
+       * @type {Array<{
+       *   code: string,
+       *   createdAt: string,
+       *   total: number,
+       *   status: string,
+       *   paymentMethod: string,
+       *   publicUrl: string,
+       *   configId: string,
+       *   checkoutUrl: string
+       * }>}
+       */
+      let orderHistoryEntries = [];
+      /** @type {string[]} */
+      let giftWishValues = [""];
+      let musicPreviewObjectUrl = "";
+      /** @type {"sample" | "file" | null} */
+      let lastMusicSelection = null;
+      const RUNTIME_I18N = {
+        vi: {
+          orderCode: "Mã đơn",
+          orderDate: "Ngày tạo",
+          orderTotal: "Tổng tiền",
+          orderStatus: "Trạng thái",
+          orderMethod: "Cổng thanh toán",
+          openGift: "Mở quà",
+          viewGift: "Xem quà",
+          copyOrderCode: "Sao chép mã",
+          copyGiftLink: "Copy link",
+          createQr: "Tạo QR",
+          orderPayNow: "Thanh toán ngay",
+          continuePay: "Tiếp tục thanh toán",
+          copiedToClipboard: "Đã sao chép.",
+          copyFailed: "Không sao chép được.",
+          noGiftLinkYet: "Chưa có link quà.",
+          historyError: "Không tải được lịch sử đơn hàng.",
+          historyNeedLogin: "Vui lòng đăng nhập để xem lịch sử đơn hàng.",
+          paymentSuccessTitle: "Thanh toán thành công",
+          paymentSuccessLoading: "Đang tải thông tin đơn…",
+          paymentSuccessLoadError:
+            "Không tải được thông tin đơn. Bạn có thể xem lại trong Lịch sử đơn hàng.",
+          payStatus_PENDING: "Chờ thanh toán",
+          payStatus_PAID: "Đã thanh toán",
+          payStatus_CANCELLED: "Đã hủy",
+          payStatus_EXPIRED: "Hết hạn",
+          payStatus_UNKNOWN: "Không xác định",
+          fileReadError: "Không đọc được file.",
+          wishPlaceholder: "Nhập câu chúc ngắn...",
+          wishRemoveAria: "Xóa câu chúc",
+          previewPlay: "Nghe thử",
+          previewPause: "Tạm dừng",
+          paymentIntl: "Thanh toán quốc tế (Visa Card)",
+          paymentBank: "Ngân hàng",
+          errNeedRecipient: "Bạn cần nhập tên người nhận.",
+          missRecipient: "Thiếu tên người nhận.",
+          errRecipientMax: "Tên tối đa 40 ký tự.",
+          errRecipientEmoji: "Tên không được chứa icon/emoji.",
+          errNeedMusic:
+            "Bạn cần chọn nhạc nền (nhạc mẫu hoặc upload file .mp3).",
+          missMusic: "Thiếu nhạc nền.",
+          errNeedImages: "Vui lòng chọn tối thiểu {min} ảnh cho album.",
+          missImages: "Thiếu ảnh album.",
+          errMaxImages: "Tối đa {max} ảnh. Hiện có {count} ảnh.",
+          errEvenImages:
+            "Số lượng ảnh phải chẵn (2, 4, 6, …). Hiện có {count} ảnh.",
+          errNeedLetterBody: "Nội dung thư là bắt buộc.",
+          missLetterBody: "Thiếu nội dung thư.",
+          hintNoImages: "Chưa có ảnh nào.",
+          hintHasImages: "Đang có {count} ảnh{state}",
+          hintEvenState: " (đã chẵn)",
+          hintOddState: " (lẻ — cần chỉnh)",
+          errRemoveBeforeAdd:
+            "Tối đa {max} ảnh. Hãy xóa bớt ảnh trước khi thêm.",
+          errOddNeedFix:
+            "Bạn đang có {count} ảnh (số lẻ). Album cần số ảnh chẵn — hãy thêm hoặc xóa một ảnh.",
+          hintSupportMp3: "Hỗ trợ file .mp3",
+          previewCreating: "Đang tạo xem trước...",
+          albumImageAlt: "Ảnh album {index}",
+          previewOpenFail:
+            "Không thể mở xem trước. Vui lòng thử lại.\nChi tiết: {detail}",
+          unknownError: "Lỗi không xác định",
+          payRedirect:
+            "Chuyển đến thanh toán\n- Phương thức: {method}\n- Tổng tiền cần thanh toán: {total}",
+          payProcessing: "Đang xử lý…",
+          tiktokQrPromptTitle: "Thông báo",
+          tiktokQrPromptBefore: "Hãy follow ",
+          tiktokQrPromptLink: "TikTok mình",
+          tiktokQrPromptAfter:
+            " để theo dõi và nhận thông báo khi có sản phẩm mới nhất nhé.",
+        },
+        en: {
+          orderCode: "Order code",
+          orderDate: "Date created",
+          orderTotal: "Total",
+          orderStatus: "Status",
+          orderMethod: "Payment method",
+          openGift: "Open gift",
+          viewGift: "View gift",
+          copyOrderCode: "Copy code",
+          copyGiftLink: "Copy link",
+          createQr: "Create QR",
+          orderPayNow: "Pay now",
+          continuePay: "Continue payment",
+          copiedToClipboard: "Copied.",
+          copyFailed: "Could not copy.",
+          noGiftLinkYet: "Gift link not available yet.",
+          historyError: "Could not load order history.",
+          historyNeedLogin: "Please sign in to view order history.",
+          paymentSuccessTitle: "Payment successful",
+          paymentSuccessLoading: "Loading order…",
+          paymentSuccessLoadError:
+            "Could not load order details. You can check Order history.",
+          payStatus_PENDING: "Pending payment",
+          payStatus_PAID: "Paid",
+          payStatus_CANCELLED: "Cancelled",
+          payStatus_EXPIRED: "Expired",
+          payStatus_UNKNOWN: "Unknown",
+          fileReadError: "Cannot read file.",
+          wishPlaceholder: "Enter a short wish...",
+          wishRemoveAria: "Remove wish",
+          previewPlay: "Preview",
+          previewPause: "Pause",
+          paymentIntl: "International payment (Visa Card)",
+          paymentBank: "Bank",
+          errNeedRecipient: "Please enter recipient name.",
+          missRecipient: "Missing recipient name.",
+          errRecipientMax: "Name must be at most 40 characters.",
+          errRecipientEmoji: "Name must not contain emoji/icon.",
+          errNeedMusic:
+            "Please choose background music (sample track or .mp3 upload).",
+          missMusic: "Missing background music.",
+          errNeedImages: "Please choose at least {min} images for the album.",
+          missImages: "Missing album images.",
+          errMaxImages: "Maximum {max} images. Currently {count} images.",
+          errEvenImages:
+            "Image count must be even (2, 4, 6, ...). Currently {count} images.",
+          errNeedLetterBody: "Letter content is required.",
+          missLetterBody: "Missing letter content.",
+          hintNoImages: "No image selected.",
+          hintHasImages: "Currently {count} images{state}",
+          hintEvenState: " (even)",
+          hintOddState: " (odd - please adjust)",
+          errRemoveBeforeAdd:
+            "Maximum {max} images. Remove some before adding more.",
+          errOddNeedFix:
+            "You currently have {count} images (odd). Album requires an even number - please add or remove one image.",
+          hintSupportMp3: "Supports .mp3 file",
+          previewCreating: "Creating preview...",
+          albumImageAlt: "Album image {index}",
+          previewOpenFail:
+            "Cannot open preview. Please try again.\nDetails: {detail}",
+          unknownError: "Unknown error",
+          payRedirect:
+            "Redirect to payment\n- Method: {method}\n- Total to pay: {total}",
+          payProcessing: "Processing…",
+          tiktokQrPromptTitle: "Quick note",
+          tiktokQrPromptBefore: "Follow me on ",
+          tiktokQrPromptLink: "my TikTok",
+          tiktokQrPromptAfter:
+            " to stay updated and get notified when new products arrive.",
+        },
+      };
+
+      function getCurrentLang() {
+        return window.__HB_CREATE_LANG === "en" ? "en" : "vi";
+      }
+
+      function tr(key, vars = {}) {
+        const lang = getCurrentLang();
+        let text =
+          (RUNTIME_I18N[lang] && RUNTIME_I18N[lang][key]) ||
+          RUNTIME_I18N.vi[key] ||
+          key;
+        Object.keys(vars).forEach((k) => {
+          text = text.replaceAll("{" + k + "}", String(vars[k]));
+        });
+        return text;
+      }
+
+      function normalizeOrderCode(v) {
+        return String(v ?? "").trim();
+      }
+
+      /** Chỉ sản phẩm Happy Birthday VIP (cùng uid với app khác vẫn phải lọc theo type). */
+      function isHappyBirthdayVipProductType(p) {
+        const t = String((p && p.type) || "")
+          .trim()
+          .toLowerCase();
+        return t === "happy-birthday-vip" || t === "happy_birthday_vip";
+      }
+
+      /** Gộp danh sách Product (API mặc định thường ẩn PENDING — cần cả hai để join đơn ↔ link quà). */
+      function mergeHbProductListsByOrderCode(productLists) {
+        const score = (p) => {
+          const link =
+            (p.linkproduct && String(p.linkproduct).trim()) ||
+            (p.linkProduct && String(p.linkProduct).trim()) ||
+            (p.link_product && String(p.link_product).trim());
+          const cfg =
+            (p.configId != null && String(p.configId).trim()) ||
+            (p.configID != null && String(p.configID).trim());
+          return (link ? 2 : 0) + (cfg ? 1 : 0);
+        };
+        const byCode = new Map();
+        for (const list of productLists || []) {
+          for (const p of list || []) {
+            if (!isHappyBirthdayVipProductType(p)) continue;
+            const key = normalizeOrderCode(p && p.orderCode);
+            if (!key) continue;
+            const prev = byCode.get(key);
+            if (!prev || score(p) > score(prev)) byCode.set(key, p);
+          }
+        }
+        return Array.from(byCode.values());
+      }
+
+      async function fetchHappyBirthdayProductsMerged(uid) {
+        const { fetchProductsByUser } = await import("./api/product.js");
+        const [r1, r2] = await Promise.all([
+          fetchProductsByUser(uid, { page: 1, limit: 100 }).catch(() => ({
+            success: false,
+            data: [],
+          })),
+          fetchProductsByUser(uid, {
+            page: 1,
+            limit: 100,
+            status: "PENDING",
+          }).catch(() => ({ success: false, data: [] })),
+        ]);
+        const merged = mergeHbProductListsByOrderCode([
+          r1.success ? r1.data : [],
+          r2.success ? r2.data : [],
+        ]);
+        return { success: true, data: merged };
+      }
+
+      function resolveAbsolutePageUrl(href) {
+        const s = String(href || "").trim();
+        if (!s) return "";
+        try {
+          return new URL(s, window.location.href).href;
+        } catch (_) {
+          return s;
+        }
+      }
+
+      function buildGiftViewerFallbackUrl(configId) {
+        const cid = String(configId || "").trim();
+        if (!cid) return "";
+        const query = "?id=" + encodeURIComponent(cid);
+        try {
+          return new URL("/" + query, window.location.origin).href;
+        } catch (_) {
+          return query;
+        }
+      }
+
+      /** URL trang xem quà: ưu tiên linkproduct, không có thì dựng /?id=configId */
+      function giftViewerUrlForOrder(order) {
+        const pub = order.publicUrl && String(order.publicUrl).trim();
+        if (pub) return resolveAbsolutePageUrl(pub);
+        const cid =
+          order.configId != null ? String(order.configId).trim() : "";
+        if (!cid) return "";
+        return buildGiftViewerFallbackUrl(cid);
+      }
+
+      function mergePaymentsWithProducts(payments, products) {
+        const productByCode = new Map();
+        for (const p of products || []) {
+          if (!isHappyBirthdayVipProductType(p)) continue;
+          const key = normalizeOrderCode(p && p.orderCode);
+          if (key) productByCode.set(key, p);
+        }
+        const rows = (payments || [])
+          .map((pay) => {
+            const key = normalizeOrderCode(pay && pay.orderCode);
+            const prod = key ? productByCode.get(key) : null;
+            if (!key || !prod) return null;
+            const thumb =
+              prod && typeof prod.images === "string" ? prod.images : "";
+            const cfgRaw =
+              prod && (prod.configId != null || prod.configID != null)
+                ? prod.configId != null && prod.configId !== ""
+                  ? prod.configId
+                  : prod.configID
+                : "";
+            const configId =
+              cfgRaw != null && String(cfgRaw).trim()
+                ? String(cfgRaw).trim()
+                : "";
+            const linkProd =
+              prod &&
+              (prod.linkproduct != null && String(prod.linkproduct).trim()
+                ? String(prod.linkproduct).trim()
+                : prod.linkProduct != null && String(prod.linkProduct).trim()
+                  ? String(prod.linkProduct).trim()
+                  : prod.link_product != null &&
+                      String(prod.link_product).trim()
+                    ? String(prod.link_product).trim()
+                    : "");
+            return {
+              code: key,
+              createdAt: pay.createdAt || "",
+              total: typeof pay.amount === "number" ? pay.amount : 0,
+              status: pay.status || "UNKNOWN",
+              paymentMethod: pay.paymentMethod || "",
+              displayName: prod && prod.name ? String(prod.name) : "",
+              thumbnailUrl: thumb,
+              publicUrl: linkProd,
+              configId,
+              checkoutUrl: pay.checkoutUrl || "",
+            };
+          })
+          .filter(Boolean);
+        rows.sort((a, b) => {
+          const ta = Date.parse(a.createdAt) || 0;
+          const tb = Date.parse(b.createdAt) || 0;
+          return tb - ta;
+        });
+        return rows;
+      }
+
+      function formatOrderHistoryDate(iso) {
+        if (!iso) return "—";
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return String(iso);
+        const loc = getCurrentLang() === "en" ? "en-GB" : "vi-VN";
+        return d.toLocaleString(loc, {
+          dateStyle: "short",
+          timeStyle: "short",
+        });
+      }
+
+      function trPaymentStatus(status) {
+        const s = String(status || "UNKNOWN")
+          .toUpperCase()
+          .replace(/\s+/g, "_");
+        const key = "payStatus_" + s;
+        const lang = getCurrentLang();
+        const fromLang =
+          (RUNTIME_I18N[lang] && RUNTIME_I18N[lang][key]) ||
+          RUNTIME_I18N.vi[key];
+        return fromLang || String(status || "—");
+      }
+
+      const OH_SVG_NS = "http://www.w3.org/2000/svg";
+      const OH_ICON_COPY =
+        '<svg xmlns="' +
+        OH_SVG_NS +
+        '" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+      const OH_ICON_VIEW =
+        '<svg xmlns="' +
+        OH_SVG_NS +
+        '" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+      const OH_ICON_LINK =
+        '<svg xmlns="' +
+        OH_SVG_NS +
+        '" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>';
+      const OH_ICON_QR =
+        '<svg xmlns="' +
+        OH_SVG_NS +
+        '" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3M18 21h3M21 18v3"/></svg>';
+
+      function orderHistoryBadgeClass(status) {
+        const s = String(status || "").toUpperCase();
+        let mod = "other";
+        if (s === "PENDING") mod = "pending";
+        else if (s === "PAID") mod = "paid";
+        else if (s === "CANCELLED") mod = "cancelled";
+        else if (s === "EXPIRED") mod = "expired";
+        return "order-history-badge order-history-badge--" + mod;
+      }
+
+      function ohAppendIconLabel(el, iconSvg, labelText) {
+        const t = document.createElement("template");
+        t.innerHTML = iconSvg.trim();
+        const icon = t.content.firstChild;
+        if (icon) el.appendChild(icon);
+        const span = document.createElement("span");
+        span.textContent = labelText;
+        el.appendChild(span);
+      }
+
+      async function copyTextWithFeedback(text) {
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+          try {
+            const { showToast } = await import("./api/payment.js");
+            showToast(tr("copiedToClipboard"), "info", 2000);
+          } catch (_) {
+            alert(tr("copiedToClipboard"));
+          }
+        } catch (_) {
+          try {
+            const { showToast } = await import("./api/payment.js");
+            showToast(tr("copyFailed"), "error");
+          } catch (__) {
+            alert(tr("copyFailed"));
+          }
+        }
+      }
+
+      function redirectToQr(link) {
+        if (!link) return;
+        const qrPageUrl =
+          "https://deargift.online/heartqr.html?link=" +
+          encodeURIComponent(link);
+        window.open(qrPageUrl, "_blank", "noopener,noreferrer");
+      }
+
+      const TIKTOK_QR_PROFILE_URL = "https://www.tiktok.com/@duyheartly";
+
+      function tiktokQrPromptStorageKey() {
+        const uid = localStorage.getItem("user_uid");
+        return uid ? "hbvip_tiktok_qr_prompt_" + uid : "";
+      }
+
+      function hasSeenTiktokQrPrompt() {
+        const k = tiktokQrPromptStorageKey();
+        return k ? localStorage.getItem(k) === "1" : false;
+      }
+
+      function markSeenTiktokQrPrompt() {
+        const k = tiktokQrPromptStorageKey();
+        if (k) localStorage.setItem(k, "1");
+      }
+
+      function openTiktokProfileFromQrPrompt() {
+        window.open(TIKTOK_QR_PROFILE_URL, "_blank", "noopener,noreferrer");
+      }
+
+      function fillTiktokFollowQrDialog() {
+        if (tiktokFollowQrTitle) {
+          tiktokFollowQrTitle.textContent = tr("tiktokQrPromptTitle");
+        }
+        if (!tiktokFollowQrMsg) return;
+        tiktokFollowQrMsg.textContent = "";
+        tiktokFollowQrMsg.appendChild(
+          document.createTextNode(tr("tiktokQrPromptBefore")),
+        );
+        const a = document.createElement("a");
+        a.href = TIKTOK_QR_PROFILE_URL;
+        a.className = "tiktok-follow-qr-link";
+        a.textContent = tr("tiktokQrPromptLink");
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          markSeenTiktokQrPrompt();
+          if (tiktokFollowQrDialog) tiktokFollowQrDialog.close();
+          openTiktokProfileFromQrPrompt();
+        });
+        tiktokFollowQrMsg.appendChild(a);
+        tiktokFollowQrMsg.appendChild(
+          document.createTextNode(tr("tiktokQrPromptAfter")),
+        );
+      }
+
+      function handleCreateQrClick(giftPageUrl, isUserFirstChronologicalOrder) {
+        if (!giftPageUrl) return;
+        if (isUserFirstChronologicalOrder && !hasSeenTiktokQrPrompt()) {
+          fillTiktokFollowQrDialog();
+          if (tiktokFollowQrDialog) tiktokFollowQrDialog.showModal();
+          return;
+        }
+        redirectToQr(giftPageUrl);
+      }
+
+      function createOrderHistoryCardElement(order, orderMeta) {
+        const st = String(order.status || "").toUpperCase();
+        const isPending = st === "PENDING";
+        const isPaid = st === "PAID";
+        const codeOk = !!(order.code && order.code !== "—");
+        const giftPageUrl = giftViewerUrlForOrder(order);
+        const hasGiftPage = !!giftPageUrl;
+        const oldestCode =
+          orderMeta && orderMeta.oldestOrderCode
+            ? String(orderMeta.oldestOrderCode)
+            : "";
+        const myCode = normalizeOrderCode(order.code);
+        const isFirstChronologicalOrder =
+          !!oldestCode && !!myCode && myCode === oldestCode;
+
+        const card = document.createElement("div");
+        card.className = "order-history-card";
+        const main = document.createElement("div");
+        main.className = "order-history-card__main";
+
+        const topLine = document.createElement("div");
+        topLine.className = "order-history-card__topline";
+        const codeGroup = document.createElement("div");
+        codeGroup.className = "order-history-card__code-group";
+        const codeLbl = document.createElement("span");
+        codeLbl.className = "order-history-card__code-label";
+        codeLbl.textContent = tr("orderCode");
+        const codeEl = document.createElement("code");
+        codeEl.textContent = order.code;
+        const copyCodeBtn = document.createElement("button");
+        copyCodeBtn.type = "button";
+        copyCodeBtn.className = "btn-copy-code";
+        copyCodeBtn.setAttribute("aria-label", tr("copyOrderCode"));
+        const copyTpl = document.createElement("template");
+        copyTpl.innerHTML = OH_ICON_COPY.trim();
+        const copyIcon = copyTpl.content.firstChild;
+        if (copyIcon) copyCodeBtn.appendChild(copyIcon);
+        copyCodeBtn.disabled = !codeOk;
+        copyCodeBtn.addEventListener("click", () => {
+          if (codeOk) copyTextWithFeedback(order.code);
+        });
+        codeGroup.appendChild(codeLbl);
+        codeGroup.appendChild(codeEl);
+        codeGroup.appendChild(copyCodeBtn);
+        const badge = document.createElement("span");
+        badge.className = orderHistoryBadgeClass(order.status);
+        badge.setAttribute("title", tr("orderStatus"));
+        badge.textContent = trPaymentStatus(order.status);
+        topLine.appendChild(codeGroup);
+        topLine.appendChild(badge);
+        main.appendChild(topLine);
+
+        const stats = document.createElement("div");
+        stats.className = "order-history-stats";
+        const rowDate = document.createElement("div");
+        rowDate.className = "order-history-stat-row";
+        const dLbl = document.createElement("span");
+        dLbl.className = "oh-label";
+        dLbl.textContent = tr("orderDate");
+        const dVal = document.createElement("span");
+        dVal.className = "oh-value";
+        dVal.textContent = formatOrderHistoryDate(order.createdAt);
+        rowDate.appendChild(dLbl);
+        rowDate.appendChild(dVal);
+        const rowPrice = document.createElement("div");
+        rowPrice.className = "order-history-stat-row";
+        const pLbl = document.createElement("span");
+        pLbl.className = "oh-label";
+        pLbl.textContent = tr("orderTotal");
+        const pVal = document.createElement("span");
+        pVal.className = "oh-value oh-value--price";
+        pVal.textContent = formatVnd(order.total);
+        rowPrice.appendChild(pLbl);
+        rowPrice.appendChild(pVal);
+        stats.appendChild(rowDate);
+        stats.appendChild(rowPrice);
+        main.appendChild(stats);
+
+        const foot = document.createElement("div");
+        foot.className = "order-history-card-actions";
+
+        if (isPending && codeOk) {
+          const payBtn = document.createElement("button");
+          payBtn.type = "button";
+          payBtn.className = "btn-order-pay-now";
+          payBtn.textContent = tr("orderPayNow");
+          payBtn.addEventListener("click", async () => {
+            payBtn.disabled = true;
+            try {
+              const { openCheckoutByOrderCode, showToast } = await import(
+                "./api/payment.js"
+              );
+              await openCheckoutByOrderCode(
+                order.code,
+                showToast,
+                order.checkoutUrl || "",
+              );
+            } catch (e) {
+              console.error("[Order history] Pay:", e);
+              try {
+                const { showToast } = await import("./api/payment.js");
+                showToast(e?.message || tr("unknownError"), "error");
+              } catch (_) {}
+            } finally {
+              payBtn.disabled = false;
+            }
+          });
+          foot.appendChild(payBtn);
+        } else if (isPaid) {
+          const row = document.createElement("div");
+          row.className = "order-history-paid-actions";
+
+          const viewEl = hasGiftPage
+            ? document.createElement("a")
+            : document.createElement("button");
+          if (hasGiftPage) {
+            viewEl.href = giftPageUrl;
+            viewEl.target = "_blank";
+            viewEl.rel = "noopener noreferrer";
+          } else {
+            viewEl.type = "button";
+            viewEl.disabled = true;
+            viewEl.title = tr("noGiftLinkYet");
+          }
+          viewEl.className = "btn-order-paid btn-order-paid--primary";
+          ohAppendIconLabel(viewEl, OH_ICON_VIEW, tr("viewGift"));
+
+          const copyLinkBtn = document.createElement("button");
+          copyLinkBtn.type = "button";
+          copyLinkBtn.className = "btn-order-paid btn-order-paid--secondary";
+          ohAppendIconLabel(copyLinkBtn, OH_ICON_LINK, tr("copyGiftLink"));
+          copyLinkBtn.disabled = !hasGiftPage;
+          if (!hasGiftPage) copyLinkBtn.title = tr("noGiftLinkYet");
+          copyLinkBtn.addEventListener("click", () => {
+            if (hasGiftPage) copyTextWithFeedback(giftPageUrl);
+          });
+
+          const qrBtn = document.createElement("button");
+          qrBtn.type = "button";
+          qrBtn.className = "btn-order-paid btn-order-paid--accent";
+          ohAppendIconLabel(qrBtn, OH_ICON_QR, tr("createQr"));
+          qrBtn.disabled = !hasGiftPage;
+          if (!hasGiftPage) qrBtn.title = tr("noGiftLinkYet");
+          qrBtn.addEventListener("click", () => {
+            if (hasGiftPage) {
+              handleCreateQrClick(giftPageUrl, isFirstChronologicalOrder);
+            }
+          });
+
+          row.appendChild(viewEl);
+          row.appendChild(copyLinkBtn);
+          row.appendChild(qrBtn);
+          foot.appendChild(row);
+        }
+
+        if (foot.childNodes.length) main.appendChild(foot);
+
+        card.appendChild(main);
+        return card;
+      }
+
+      function renderOrderHistory() {
+        orderHistoryLoading.hidden = true;
+        orderHistoryError.hidden = true;
+        orderHistoryList.innerHTML = "";
+        if (!orderHistoryEntries.length) {
+          orderHistoryList.hidden = true;
+          orderHistoryList.setAttribute("aria-hidden", "true");
+          orderHistoryEmpty.hidden = false;
+          orderHistoryEmpty.removeAttribute("aria-hidden");
+          return;
+        }
+        orderHistoryEmpty.hidden = true;
+        orderHistoryEmpty.setAttribute("aria-hidden", "true");
+        orderHistoryList.hidden = false;
+        orderHistoryList.removeAttribute("aria-hidden");
+
+        const oldestOrderCode =
+          orderHistoryEntries.length > 0
+            ? normalizeOrderCode(
+                orderHistoryEntries[orderHistoryEntries.length - 1].code,
+              )
+            : "";
+        orderHistoryEntries.forEach((order) => {
+          orderHistoryList.appendChild(
+            createOrderHistoryCardElement(order, {
+              oldestOrderCode: oldestOrderCode,
+            }),
+          );
+        });
+      }
+
+      async function openOrderHistoryDialog() {
+        const uid = localStorage.getItem("user_uid");
+        if (!uid) {
+          alert(tr("historyNeedLogin"));
+          return;
+        }
+        orderHistoryList.hidden = true;
+        orderHistoryEmpty.hidden = true;
+        orderHistoryError.hidden = true;
+        orderHistoryLoading.hidden = false;
+        orderHistoryDialog.showModal();
+        try {
+          const { fetchPaymentsByUser } = await import("./api/payment.js");
+          const [payRes, prodRes] = await Promise.all([
+            fetchPaymentsByUser(uid, { page: 1, limit: 50 }),
+            fetchHappyBirthdayProductsMerged(uid),
+          ]);
+          orderHistoryLoading.hidden = true;
+          if (!payRes.success) {
+            orderHistoryEmpty.hidden = true;
+            orderHistoryEmpty.setAttribute("aria-hidden", "true");
+            orderHistoryError.hidden = false;
+            orderHistoryErrorText.textContent =
+              payRes.message || tr("historyError");
+            return;
+          }
+          const hbProducts = prodRes.success ? prodRes.data : [];
+          orderHistoryEntries = mergePaymentsWithProducts(
+            payRes.data,
+            hbProducts,
+          );
+          renderOrderHistory();
+        } catch (e) {
+          console.error("[Order history]", e);
+          orderHistoryLoading.hidden = true;
+          orderHistoryEmpty.hidden = true;
+          orderHistoryEmpty.setAttribute("aria-hidden", "true");
+          orderHistoryError.hidden = false;
+          orderHistoryErrorText.textContent = e?.message || tr("historyError");
+        }
+      }
+
+      function sleepMs(ms) {
+        return new Promise((r) => setTimeout(r, ms));
+      }
+
+      async function fetchAllMergedOrderHistoryRows() {
+        const uid = localStorage.getItem("user_uid");
+        if (!uid) return [];
+        const { fetchPaymentsByUser } = await import("./api/payment.js");
+        const [payRes, prodRes] = await Promise.all([
+          fetchPaymentsByUser(uid, { page: 1, limit: 50 }),
+          fetchHappyBirthdayProductsMerged(uid),
+        ]);
+        if (!payRes.success) return [];
+        const hbProducts = prodRes.success ? prodRes.data : [];
+        return mergePaymentsWithProducts(payRes.data, hbProducts);
+      }
+
+      async function fetchMergedOrderRowForCode(orderCode) {
+        const normalized = normalizeOrderCode(orderCode);
+        if (!normalized) return null;
+        const rows = await fetchAllMergedOrderHistoryRows();
+        return (
+          rows.find((o) => normalizeOrderCode(o.code) === normalized) || null
+        );
+      }
+
+      async function openPaymentSuccessOrderDialog(orderCode) {
+        if (
+          !paymentSuccessOrderDialog ||
+          !paymentSuccessOrderLoading ||
+          !paymentSuccessOrderCardWrap
+        ) {
+          return;
+        }
+        const uid = localStorage.getItem("user_uid");
+        if (!uid) {
+          alert(tr("historyNeedLogin"));
+          return;
+        }
+        paymentSuccessOrderCardWrap.innerHTML = "";
+        paymentSuccessOrderError.hidden = true;
+        paymentSuccessOrderError.setAttribute("aria-hidden", "true");
+        paymentSuccessOrderCardWrap.hidden = true;
+        paymentSuccessOrderCardWrap.setAttribute("aria-hidden", "true");
+        paymentSuccessOrderLoading.hidden = false;
+        paymentSuccessOrderLoading.removeAttribute("aria-hidden");
+        if (paymentSuccessOrderLoadingText) {
+          paymentSuccessOrderLoadingText.textContent = tr(
+            "paymentSuccessLoading",
+          );
+        }
+        paymentSuccessOrderDialog.showModal();
+
+        const normalizedSuccessCode = normalizeOrderCode(orderCode);
+        let row = null;
+        let successOrderRows = [];
+        for (let i = 0; i < 4; i++) {
+          successOrderRows = await fetchAllMergedOrderHistoryRows();
+          row =
+            successOrderRows.find(
+              (o) => normalizeOrderCode(o.code) === normalizedSuccessCode,
+            ) || null;
+          if (row) break;
+          await sleepMs(700);
+        }
+
+        paymentSuccessOrderLoading.hidden = true;
+        paymentSuccessOrderLoading.setAttribute("aria-hidden", "true");
+
+        if (!row) {
+          if (paymentSuccessOrderErrorText) {
+            paymentSuccessOrderErrorText.textContent = tr(
+              "paymentSuccessLoadError",
+            );
+          }
+          paymentSuccessOrderError.hidden = false;
+          paymentSuccessOrderError.removeAttribute("aria-hidden");
+          return;
+        }
+
+        const displayRow = { ...row, status: "PAID" };
+        const oldestForSuccess =
+          successOrderRows.length > 0
+            ? normalizeOrderCode(
+                successOrderRows[successOrderRows.length - 1].code,
+              )
+            : "";
+        paymentSuccessOrderCardWrap.innerHTML = "";
+        paymentSuccessOrderCardWrap.appendChild(
+          createOrderHistoryCardElement(displayRow, {
+            oldestOrderCode: oldestForSuccess,
+          }),
+        );
+        paymentSuccessOrderError.hidden = true;
+        paymentSuccessOrderError.setAttribute("aria-hidden", "true");
+        paymentSuccessOrderCardWrap.hidden = false;
+        paymentSuccessOrderCardWrap.removeAttribute("aria-hidden");
+      }
+
+      function clearErrors() {
+        errRecipient.textContent = "";
+        errMusic.textContent = "";
+        errImages.textContent = "";
+        errBody.textContent = "";
+      }
+
+      function showMissingRequiredDialog(missingItems) {
+        if (!Array.isArray(missingItems) || missingItems.length === 0) return;
+        missingRequiredList.innerHTML = "";
+        missingItems.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          missingRequiredList.appendChild(li);
+        });
+        missingRequiredDialog.showModal();
+      }
+
+      function hasEmojiOrSymbol(text) {
+        if (!text) return false;
+        return /[\p{Extended_Pictographic}\p{Emoji_Presentation}\p{So}]/u.test(
+          text,
+        );
+      }
+
+      function getMusicPayload() {
+        const uploaded = musicFileInput.files?.[0] || null;
+        return {
+          sampleTrackUrl: musicSampleSelect.value || null,
+          uploadedFile: uploaded
+            ? {
+                name: uploaded.name,
+                size: uploaded.size,
+                type: uploaded.type,
+              }
+            : null,
+        };
+      }
+
+      function readFileAsDataUrl(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result || ""));
+          reader.onerror = () => reject(new Error(tr("fileReadError")));
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function renderGiftWishes() {
+        giftWishesList.innerHTML = "";
+        giftWishValues.forEach((value, idx) => {
+          const row = document.createElement("div");
+          row.className = "gift-wish-row";
+
+          const input = document.createElement("input");
+          input.type = "text";
+          input.maxLength = 28;
+          input.className = "gift-wish-input";
+          input.placeholder = tr("wishPlaceholder");
+          input.value = value;
+          input.addEventListener("input", () => {
+            giftWishValues[idx] = input.value;
+          });
+          row.appendChild(input);
+
+          if (giftWishValues.length > MIN_GIFT_WISHES) {
+            const removeBtn = document.createElement("button");
+            removeBtn.type = "button";
+            removeBtn.className = "gift-wish-remove";
+            removeBtn.setAttribute("aria-label", tr("wishRemoveAria"));
+            removeBtn.innerHTML =
+              '<img src="./assets/icons/delete.png" alt="" aria-hidden="true" />';
+            removeBtn.addEventListener("click", () => {
+              giftWishValues.splice(idx, 1);
+              renderGiftWishes();
+            });
+            row.appendChild(removeBtn);
+          }
+
+          giftWishesList.appendChild(row);
+        });
+
+        addGiftWishBtn.disabled = giftWishValues.length >= MAX_GIFT_WISHES;
+      }
+
+      function syncGiftWishesVisibility() {
+        const enabled = enableFinalGift.checked;
+        giftWishesWrap.hidden = !enabled;
+        giftWishesWrap.style.display = enabled ? "grid" : "none";
+        giftDemoWrap.hidden = enabled;
+        giftDemoWrap.style.display = enabled ? "none" : "block";
+        if (!enabled) return;
+        if (!giftWishValues.length) {
+          giftWishValues = [""];
+        }
+        renderGiftWishes();
+      }
+
+      function formatVnd(n) {
+        return new Intl.NumberFormat("vi-VN").format(n) + " đ";
+      }
+
+      function clearMusicPreviewObjectUrl() {
+        if (!musicPreviewObjectUrl) return;
+        URL.revokeObjectURL(musicPreviewObjectUrl);
+        musicPreviewObjectUrl = "";
+      }
+
+      function setMusicPreviewVisible(visible) {
+        musicPreviewWrap.hidden = !visible;
+        musicPreviewWrap.style.display = visible ? "grid" : "none";
+      }
+
+      function formatAudioTime(seconds) {
+        const safe = Number.isFinite(seconds) && seconds > 0 ? seconds : 0;
+        const m = Math.floor(safe / 60);
+        const s = Math.floor(safe % 60);
+        return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+      }
+
+      function syncMusicPreviewUi() {
+        const duration = musicPreviewPlayer.duration || 0;
+        const current = musicPreviewPlayer.currentTime || 0;
+        const pct = duration > 0 ? (current / duration) * 100 : 0;
+        musicPreviewProgress.value = String(pct);
+        musicPreviewProgress.style.background =
+          "linear-gradient(to right, #ff5fa8 0%, #ff5fa8 " +
+          pct +
+          "%, #ffd7ea " +
+          pct +
+          "%, #ffd7ea 100%)";
+        musicPreviewTime.textContent =
+          formatAudioTime(current) + " / " + formatAudioTime(duration);
+        musicPreviewToggleIcon.textContent = musicPreviewPlayer.paused
+          ? "▶"
+          : "⏸";
+        musicPreviewToggleText.textContent = musicPreviewPlayer.paused
+          ? tr("previewPlay")
+          : tr("previewPause");
+      }
+
+      function updateMusicPreview() {
+        clearMusicPreviewObjectUrl();
+        const selectedFile = musicFileInput.files?.[0] || null;
+        const selectedSampleUrl = musicSampleSelect.value || "";
+        const selectedSampleLabel =
+          musicSampleSelect.options[musicSampleSelect.selectedIndex]?.text ||
+          "";
+
+        function setPreviewSource(src, hintText) {
+          musicPreviewPlayer.pause();
+          musicPreviewPlayer.src = src;
+          musicPreviewPlayer.load();
+          musicPreviewPlayer.currentTime = 0;
+          musicPreviewHint.textContent = hintText;
+          setMusicPreviewVisible(true);
+          syncMusicPreviewUi();
+          // Có thể bị trình duyệt chặn auto-play, nhưng player luôn sẵn sàng bấm play thủ công.
+          musicPreviewPlayer.play().catch(() => {
+            syncMusicPreviewUi();
+          });
+        }
+
+        // Ưu tiên theo lựa chọn gần nhất của người dùng
+        if (lastMusicSelection === "sample" && selectedSampleUrl) {
+          setPreviewSource(selectedSampleUrl, selectedSampleLabel);
+          return;
+        }
+
+        if (lastMusicSelection === "file" && selectedFile) {
+          musicPreviewObjectUrl = URL.createObjectURL(selectedFile);
+          setPreviewSource(musicPreviewObjectUrl, selectedFile.name);
+          return;
+        }
+
+        if (selectedFile) {
+          musicPreviewObjectUrl = URL.createObjectURL(selectedFile);
+          setPreviewSource(musicPreviewObjectUrl, selectedFile.name);
+          return;
+        }
+
+        if (selectedSampleUrl) {
+          setPreviewSource(selectedSampleUrl, selectedSampleLabel);
+          return;
+        }
+
+        musicPreviewPlayer.removeAttribute("src");
+        musicPreviewPlayer.load();
+        musicPreviewHint.textContent = "";
+        syncMusicPreviewUi();
+        setMusicPreviewVisible(false);
+      }
+
+      function getPriceBreakdown() {
+        const imageCount = bookImageEntries.length;
+        const extraImagePairs =
+          imageCount > EXTRA_IMAGE_PAIR_START
+            ? Math.floor((imageCount - EXTRA_IMAGE_PAIR_START) / 2)
+            : 0;
+        const extraImageFee = extraImagePairs * EXTRA_IMAGE_PAIR_PRICE;
+        const gift = enableFinalGift.checked ? FINAL_GIFT_PRICE : 0;
+        const permanent = enablePermanentSave.checked ? PERMANENT_PRICE : 0;
+        return {
+          base: BASE_PRICE,
+          gift,
+          extraImageFee,
+          permanent,
+          total: BASE_PRICE + gift + extraImageFee + permanent,
+        };
+      }
+
+      function renderPriceBreakdown() {
+        const p = getPriceBreakdown();
+        basePriceText.textContent = formatVnd(p.base);
+        giftPriceText.textContent = formatVnd(p.gift);
+        extraImagePriceText.textContent = formatVnd(p.extraImageFee);
+        extraImagePriceLine.hidden = p.extraImageFee === 0;
+        albumPriceNote.hidden = p.extraImageFee === 0;
+        albumPriceNote.textContent =
+          p.extraImageFee > 0
+            ? "(+" + formatVnd(p.extraImageFee) + " phí ảnh thêm)"
+            : "";
+        permanentPriceText.textContent = formatVnd(p.permanent);
+        totalPriceText.textContent = formatVnd(p.total);
+      }
+
+      function getPaymentDescription() {
+        if (payKindIntl.checked) {
+          return tr("paymentIntl");
+        }
+        return tr("paymentBank");
+      }
+
+      function getPaymentPayload() {
+        return {
+          kind: payKindBank.checked ? "bank" : "intl",
+          label: getPaymentDescription(),
+        };
+      }
+
+      function validateFormAndShowErrors() {
+        clearErrors();
+        let valid = true;
+        const payBlockerMessages = [];
+        const nameValue = recipient.value.trim();
+        const selectedMusicFile = musicFileInput.files?.[0] || null;
+        const selectedMusicSample = musicSampleSelect.value || "";
+        const imageCount = bookImageEntries.length;
+        const bodyValue = body.value.trim();
+
+        if (!nameValue) {
+          errRecipient.textContent = tr("errNeedRecipient");
+          payBlockerMessages.push(tr("errNeedRecipient"));
+          valid = false;
+        } else if (nameValue.length > 40) {
+          errRecipient.textContent = tr("errRecipientMax");
+          payBlockerMessages.push(tr("errRecipientMax"));
+          valid = false;
+        } else if (hasEmojiOrSymbol(nameValue)) {
+          errRecipient.textContent = tr("errRecipientEmoji");
+          payBlockerMessages.push(tr("errRecipientEmoji"));
+          valid = false;
+        }
+
+        if (!selectedMusicFile && !selectedMusicSample) {
+          errMusic.textContent = tr("errNeedMusic");
+          payBlockerMessages.push(tr("errNeedMusic"));
+          valid = false;
+        }
+
+        if (imageCount < MIN_BOOK_IMAGES) {
+          errImages.textContent = tr("errNeedImages", { min: MIN_BOOK_IMAGES });
+          payBlockerMessages.push(
+            tr("errNeedImages", { min: MIN_BOOK_IMAGES }),
+          );
+          valid = false;
+        } else if (imageCount > MAX_BOOK_IMAGES) {
+          errImages.textContent = tr("errMaxImages", {
+            max: MAX_BOOK_IMAGES,
+            count: imageCount,
+          });
+          payBlockerMessages.push(
+            tr("errMaxImages", {
+              max: MAX_BOOK_IMAGES,
+              count: imageCount,
+            }),
+          );
+          valid = false;
+        } else if (imageCount % 2 !== 0) {
+          errImages.textContent = tr("errEvenImages", { count: imageCount });
+          payBlockerMessages.push(
+            tr("errEvenImages", { count: imageCount }),
+          );
+          valid = false;
+        }
+
+        if (!bodyValue) {
+          errBody.textContent = tr("errNeedLetterBody");
+          payBlockerMessages.push(tr("errNeedLetterBody"));
+          valid = false;
+        }
+
+        if (!valid && payBlockerMessages.length > 0) {
+          showMissingRequiredDialog(payBlockerMessages);
+        }
+
+        return valid;
+      }
+
+      function revokeAllBookImages() {
+        bookImageEntries.forEach((e) => URL.revokeObjectURL(e.objectUrl));
+        bookImageEntries = [];
+      }
+
+      function updateBookImageHint() {
+        const n = bookImageEntries.length;
+        if (n === 0) {
+          bookImageCountHint.textContent = tr("hintNoImages");
+          return;
+        }
+        bookImageCountHint.textContent = tr("hintHasImages", {
+          count: n,
+          state: n % 2 === 0 ? tr("hintEvenState") : tr("hintOddState"),
+        });
+        if (n > MAX_BOOK_IMAGES) {
+          errImages.textContent = tr("errRemoveBeforeAdd", {
+            max: MAX_BOOK_IMAGES,
+          });
+        } else if (n % 2 !== 0) {
+          errImages.textContent = tr("errOddNeedFix", { count: n });
+        } else {
+          errImages.textContent = "";
+        }
+      }
+
+      function renderBookImageGrid() {
+        bookImageGrid.innerHTML = "";
+        bookImageEntries.forEach((entry, index) => {
+          const wrap = document.createElement("div");
+          wrap.className = "book-thumb-wrap";
+          const img = document.createElement("img");
+          img.src = entry.objectUrl;
+          img.alt =
+            entry.file.name || tr("albumImageAlt", { index: index + 1 });
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "book-thumb-remove";
+          btn.setAttribute("aria-label", "Xóa ảnh này");
+          btn.textContent = "×";
+          btn.addEventListener("click", () => {
+            URL.revokeObjectURL(entry.objectUrl);
+            bookImageEntries.splice(index, 1);
+            renderBookImageGrid();
+            updateBookImageHint();
+          });
+          wrap.append(img, btn);
+          bookImageGrid.appendChild(wrap);
+        });
+        updateBookImageHint();
+        renderPriceBreakdown();
+      }
+
+      bookImagesPickBtn.addEventListener("click", () => {
+        bookImagesInput.click();
+      });
+
+      bookImagesInput.addEventListener("change", () => {
+        const files = Array.from(bookImagesInput.files || []);
+        bookImagesInput.value = "";
+        let added = 0;
+        files.forEach((file) => {
+          if (!file.type.startsWith("image/")) return;
+          if (bookImageEntries.length >= MAX_BOOK_IMAGES) return;
+          const objectUrl = URL.createObjectURL(file);
+          bookImageEntries.push({ file, objectUrl });
+          added += 1;
+        });
+        if (added === 0) return;
+        renderBookImageGrid();
+      });
+
+      musicFileInput.addEventListener("change", () => {
+        const file = musicFileInput.files?.[0];
+        if (!file) {
+          lastMusicSelection = musicSampleSelect.value ? "sample" : null;
+          musicFileHint.textContent = tr("hintSupportMp3");
+          updateMusicPreview();
+          return;
+        }
+        lastMusicSelection = "file";
+        // Chọn file thì bỏ chọn mẫu để đảm bảo lấy bài mới nhất vừa chọn
+        musicSampleSelect.value = "";
+        musicFileHint.textContent = "Đã chọn: " + file.name;
+        updateMusicPreview();
+      });
+      musicFilePickBtn.addEventListener("click", () => {
+        musicFileInput.click();
+      });
+      musicSampleSelect.addEventListener("change", () => {
+        lastMusicSelection = musicSampleSelect.value ? "sample" : null;
+        if (musicSampleSelect.value) {
+          // Chọn mẫu thì bỏ file cũ để đảm bảo lấy bài mới nhất vừa chọn
+          musicFileInput.value = "";
+          musicFileHint.textContent = tr("hintSupportMp3");
+        }
+        updateMusicPreview();
+      });
+      musicGuideBtn.addEventListener("click", () => {
+        musicGuideDialog.showModal();
+      });
+      closeMusicGuideDialogBtn.addEventListener("click", () => {
+        musicGuideDialog.close();
+      });
+      musicGuideDialog.addEventListener("click", (e) => {
+        if (e.target === musicGuideDialog) {
+          musicGuideDialog.close();
+        }
+      });
+      closeMissingRequiredDialogBtn.addEventListener("click", () => {
+        missingRequiredDialog.close();
+      });
+      confirmMissingRequiredBtn.addEventListener("click", () => {
+        missingRequiredDialog.close();
+      });
+      missingRequiredDialog.addEventListener("click", (e) => {
+        const rect = missingRequiredDialog.getBoundingClientRect();
+        const isOutside =
+          e.clientX < rect.left ||
+          e.clientX > rect.right ||
+          e.clientY < rect.top ||
+          e.clientY > rect.bottom;
+        if (isOutside) {
+          missingRequiredDialog.close();
+        }
+      });
+      if (closeTiktokFollowQrBtn && tiktokFollowQrDialog) {
+        closeTiktokFollowQrBtn.addEventListener("click", () => {
+          tiktokFollowQrDialog.close();
+        });
+      }
+      if (tiktokFollowQrOkBtn && tiktokFollowQrDialog) {
+        tiktokFollowQrOkBtn.addEventListener("click", () => {
+          markSeenTiktokQrPrompt();
+          tiktokFollowQrDialog.close();
+          openTiktokProfileFromQrPrompt();
+        });
+      }
+      if (tiktokFollowQrDialog) {
+        tiktokFollowQrDialog.addEventListener("click", (e) => {
+          const rect = tiktokFollowQrDialog.getBoundingClientRect();
+          const isOutside =
+            e.clientX < rect.left ||
+            e.clientX > rect.right ||
+            e.clientY < rect.top ||
+            e.clientY > rect.bottom;
+          if (isOutside) {
+            tiktokFollowQrDialog.close();
+          }
+        });
+      }
+      musicGuideLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.open(link.href, "_blank", "noopener,noreferrer");
+        });
+      });
+      musicPreviewToggleBtn.addEventListener("click", () => {
+        if (!musicPreviewPlayer.src) return;
+        if (musicPreviewPlayer.paused) {
+          musicPreviewPlayer.play().catch(() => {});
+        } else {
+          musicPreviewPlayer.pause();
+        }
+        syncMusicPreviewUi();
+      });
+      musicPreviewProgress.addEventListener("input", () => {
+        const duration = musicPreviewPlayer.duration || 0;
+        if (!duration) return;
+        const pct = Number(musicPreviewProgress.value) / 100;
+        musicPreviewPlayer.currentTime = duration * pct;
+        syncMusicPreviewUi();
+      });
+      musicPreviewPlayer.addEventListener("timeupdate", syncMusicPreviewUi);
+      musicPreviewPlayer.addEventListener("loadedmetadata", syncMusicPreviewUi);
+      musicPreviewPlayer.addEventListener("play", syncMusicPreviewUi);
+      musicPreviewPlayer.addEventListener("pause", syncMusicPreviewUi);
+      musicPreviewPlayer.addEventListener("ended", syncMusicPreviewUi);
+
+      addGiftWishBtn.addEventListener("click", () => {
+        if (giftWishValues.length >= MAX_GIFT_WISHES) return;
+        giftWishValues.push("");
+        renderGiftWishes();
+      });
+      applyGiftWishTemplatesBtn.addEventListener("click", () => {
+        giftWishValues = GIFT_WISH_TEMPLATES.map((item) => item.slice(0, 28));
+        renderGiftWishes();
+      });
+      enableFinalGift.addEventListener("change", () => {
+        renderPriceBreakdown();
+        syncGiftWishesVisibility();
+      });
+      enablePermanentSave.addEventListener("change", renderPriceBreakdown);
+      historyOrderBtn.addEventListener("click", openOrderHistoryDialog);
+      historyInlineBtn.addEventListener("click", openOrderHistoryDialog);
+      closeHistoryDialogBtn.addEventListener("click", () => {
+        orderHistoryDialog.close();
+      });
+      orderHistoryDialog.addEventListener("click", (e) => {
+        const rect = orderHistoryDialog.getBoundingClientRect();
+        const isOutside =
+          e.clientX < rect.left ||
+          e.clientX > rect.right ||
+          e.clientY < rect.top ||
+          e.clientY > rect.bottom;
+        if (isOutside) {
+          orderHistoryDialog.close();
+        }
+      });
+      closePaymentSuccessOrderBtn?.addEventListener("click", () => {
+        paymentSuccessOrderDialog?.close();
+      });
+      paymentSuccessOrderDialog?.addEventListener("click", (e) => {
+        if (!paymentSuccessOrderDialog) return;
+        const rect = paymentSuccessOrderDialog.getBoundingClientRect();
+        const isOutside =
+          e.clientX < rect.left ||
+          e.clientX > rect.right ||
+          e.clientY < rect.top ||
+          e.clientY > rect.bottom;
+        if (isOutside) paymentSuccessOrderDialog.close();
+      });
+      window.addEventListener("payment_success", (ev) => {
+        const code = ev.detail?.orderCode;
+        if (code === undefined || code === null) return;
+        const s = String(code).trim();
+        if (!s) return;
+        openPaymentSuccessOrderDialog(s);
+      });
+      window.addEventListener("beforeunload", clearMusicPreviewObjectUrl);
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nameValue = recipient.value.trim();
+        const imageCount = bookImageEntries.length;
+        const bodyValue = body.value.trim();
+
+        if (!validateFormAndShowErrors()) return;
+
+        const imageMeta = bookImageEntries.map((e) => ({
+          name: e.file.name,
+          size: e.file.size,
+          type: e.file.type,
+        }));
+
+        const data = {
+          accountEmail: document.getElementById("userEmail").textContent,
+          intro: {
+            recipientName: nameValue,
+            music: getMusicPayload(),
+          },
+          book: {
+            imageCount: imageCount,
+            images: imageMeta,
+            /* Gửi file thật qua FormData khi tích hợp API */
+          },
+          letter: {
+            title: document.getElementById("letterTitle").value.trim(),
+            body: bodyValue,
+            signature: document.getElementById("letterSignature").value.trim(),
+          },
+          finalGift: {
+            enabled: enableFinalGift.checked,
+            wishes: enableFinalGift.checked
+              ? giftWishValues.map((w) => w.trim()).filter(Boolean)
+              : [],
+          },
+          payment: {
+            ...getPaymentPayload(),
+            permanent: enablePermanentSave.checked,
+            prices: getPriceBreakdown(),
+          },
+        };
+
+        return data;
+      });
+
+      previewOrderBtn.addEventListener("click", async () => {
+        if (!validateFormAndShowErrors()) return;
+
+        previewOrderBtn.disabled = true;
+        const oldText = previewOrderBtnText?.textContent || "";
+        if (previewOrderBtnText)
+          previewOrderBtnText.textContent = tr("previewCreating");
+
+        try {
+          const selectedSampleUrl = musicSampleSelect.value || "";
+          const uploadedMusicFile = musicFileInput.files?.[0] || null;
+          const selectedMusicUrl = uploadedMusicFile
+            ? await readFileAsDataUrl(uploadedMusicFile)
+            : selectedSampleUrl;
+          const imageDataUrls = await Promise.all(
+            bookImageEntries.map((entry) => readFileAsDataUrl(entry.file)),
+          );
+          const wishes = enableFinalGift.checked
+            ? giftWishValues.map((w) => w.trim()).filter(Boolean)
+            : [];
+
+          const previewData = {
+            intro: {
+              recipientName: recipient.value.trim(),
+            },
+            music: {
+              tracks: selectedMusicUrl ? [selectedMusicUrl] : [],
+              selectedTrackUrl: selectedMusicUrl || "",
+            },
+            book: {
+              images: imageDataUrls.map((url, index) => ({
+                url,
+                alt: tr("albumImageAlt", { index: index + 1 }),
+              })),
+            },
+            letter: {
+              title: document.getElementById("letterTitle").value.trim(),
+              body: body.value.trim(),
+              signature: document
+                .getElementById("letterSignature")
+                .value.trim(),
+            },
+            finalGift: {
+              enabled: enableFinalGift.checked,
+              wishes,
+            },
+          };
+
+          const previewKey =
+            "hbPreviewData:" +
+            Date.now() +
+            ":" +
+            Math.random().toString(36).slice(2);
+          if (!window.__HB_PREVIEW_TRANSFER_MAP) {
+            window.__HB_PREVIEW_TRANSFER_MAP = {};
+          }
+          window.__HB_PREVIEW_TRANSFER_MAP[previewKey] = previewData;
+          window.open(
+            "./index.html?mode=preview&previewKey=" +
+              encodeURIComponent(previewKey),
+            "_blank",
+          );
+        } catch (error) {
+          alert(
+            tr("previewOpenFail", {
+              detail: error?.message || tr("unknownError"),
+            }),
+          );
+        } finally {
+          previewOrderBtn.disabled = false;
+          if (previewOrderBtnText) previewOrderBtnText.textContent = oldText;
+        }
+      });
+
+      function buildHappyBirthdayFormData() {
+        const uploaded = musicFileInput.files?.[0] || null;
+        const samplePath = musicSampleSelect.value || "";
+        const pathForSample = samplePath
+          ? new URL(samplePath, window.location.href).href
+          : "";
+        const intro = {
+          recipientName: recipient.value.trim(),
+          backgroundMusic: uploaded
+            ? {
+                type: "file",
+                name: uploaded.name || "",
+                mimeType: uploaded.type || "",
+                size: Number(uploaded.size) || 0,
+              }
+            : { type: "sample", path: pathForSample },
+        };
+        const payload = {
+          intro,
+          letter: {
+            title: document.getElementById("letterTitle").value.trim(),
+            body: body.value.trim(),
+            signature: document.getElementById("letterSignature").value.trim(),
+          },
+          finalGift: {
+            enabled: enableFinalGift.checked,
+            wishes: enableFinalGift.checked
+              ? giftWishValues.map((w) => w.trim()).filter(Boolean)
+              : [],
+          },
+          isSavePermanent: enablePermanentSave.checked,
+        };
+        const fd = new FormData();
+        fd.append("data", JSON.stringify(payload));
+        bookImageEntries.forEach((entry) => {
+          fd.append("albumImages", entry.file, entry.file.name);
+        });
+        if (uploaded) {
+          fd.append("musicFile", uploaded, uploaded.name);
+        }
+        return fd;
+      }
+
+      window.__HB_CHECKOUT__ = {
+        validateFormAndShowErrors,
+        buildHappyBirthdayFormData,
+        getPriceBreakdown,
+        isPayIntl: () => payKindIntl.checked,
+        getRecipientName: () => recipient.value.trim(),
+        tr,
+      };
+
+      updateMusicPreview();
+      enableFinalGift.checked = false;
+      renderPriceBreakdown();
+      syncGiftWishesVisibility();
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script
+      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./js/create-checkout.js"></script>
+  </body>
+</html>

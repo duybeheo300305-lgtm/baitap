@@ -1,0 +1,626 @@
+.container {
+  width: 100%;
+  min-height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: max(8px, env(safe-area-inset-top, 0px))
+    max(8px, env(safe-area-inset-right, 0px))
+    max(8px, env(safe-area-inset-bottom, 0px))
+    max(8px, env(safe-area-inset-left, 0px));
+}
+
+.envelope-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  flex-shrink: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  color: inherit;
+}
+
+.envelope {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 200px;
+  margin: 0;
+  background-color: #c9d0d2;
+  overflow: visible;
+}
+
+.envelope .envelope__card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  min-height: 200px;
+  height: auto;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: visible;
+  transform-style: preserve-3d;
+  background: linear-gradient(168deg, #fffefb 0%, #faf3e8 42%, #f3e8dc 100%);
+  border: 1px solid rgba(201, 162, 79, 0.45);
+  box-shadow:
+    0 6px 28px rgba(74, 28, 42, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.45) inset,
+    0 1px 0 rgba(255, 255, 255, 0.65) inset;
+}
+
+/* Khung 3D + chiều cao động: khi đóng chỉ hở một dải giấy gấp */
+.envelope .letter-scene {
+  perspective: 1100px;
+  perspective-origin: 50% 0%;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  max-height: 3.25rem;
+  transition: max-height 0.05s;
+}
+
+.envelope .envelope__card.open .letter-scene {
+  max-height: min(92vh, 3200px);
+  transition: max-height 1.15s cubic-bezier(0.33, 0.9, 0.32, 1) 0.45s;
+}
+
+.envelope .letter {
+  position: relative;
+  padding: 1.1rem 1.15rem 1.15rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-family: "Pacifico", cursive, sans-serif;
+  color: #3a2a2c;
+  transform-origin: top center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-image:
+    radial-gradient(
+      ellipse 100% 55% at 50% 0%,
+      rgba(255, 252, 248, 0.95),
+      transparent 62%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1.14rem,
+      rgba(139, 90, 98, 0.045) 1.14rem,
+      rgba(139, 90, 98, 0.045) calc(1.14rem + 1px)
+    );
+}
+
+.envelope .letter::before {
+  content: "";
+  position: absolute;
+  inset: 0.55rem;
+  border: 1px solid rgba(183, 110, 121, 0.28);
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.envelope .letter > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Trạng thái gấp: xoay theo trục X + nén theo Y, mờ nhẹ */
+.envelope .envelope__card:not(.open) .letter {
+  transform: rotateX(76deg) scaleY(0.2);
+  opacity: 0.58;
+}
+
+/* Khi mở: giữ khung hình 0% trong lúc delay (animation-fill-mode: both) */
+.envelope .envelope__card.open .letter {
+  -webkit-animation: letterUnfold 1.05s cubic-bezier(0.25, 0.85, 0.35, 1) 0.52s
+    both forwards;
+  animation: letterUnfold 1.05s cubic-bezier(0.25, 0.85, 0.35, 1) 0.52s both
+    forwards;
+}
+
+@keyframes letterUnfold {
+  0% {
+    transform: rotateX(76deg) scaleY(0.2);
+    opacity: 0.58;
+  }
+  35% {
+    opacity: 0.82;
+    transform: rotateX(38deg) scaleY(0.62);
+  }
+  68% {
+    opacity: 0.96;
+    transform: rotateX(8deg) scaleY(0.96);
+  }
+  100% {
+    transform: rotateX(0deg) scaleY(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes letterUnfold {
+  0% {
+    -webkit-transform: rotateX(76deg) scaleY(0.2);
+    opacity: 0.58;
+  }
+  35% {
+    opacity: 0.82;
+    -webkit-transform: rotateX(38deg) scaleY(0.62);
+  }
+  68% {
+    opacity: 0.96;
+    -webkit-transform: rotateX(8deg) scaleY(0.96);
+  }
+  100% {
+    -webkit-transform: rotateX(0deg) scaleY(1);
+    opacity: 1;
+  }
+}
+
+.envelope .letter__title:empty::after {
+  display: none;
+}
+
+.envelope .letter__title {
+  margin: 0;
+  padding-bottom: 0.15rem;
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #6b2a3d;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 220, 200, 0.5);
+}
+
+.envelope .letter__title::after {
+  content: "✦";
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.65em;
+  color: #b8860b;
+  opacity: 0.88;
+  text-shadow: none;
+}
+
+.envelope .letter__body {
+  margin: 0;
+}
+
+.envelope .letter__paragraph {
+  margin: 0 0 0.28em;
+  padding: 0;
+  font-size: 0.84rem;
+  line-height: 1.34;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #4a3538;
+  text-indent: 1.2em;
+}
+
+.envelope .letter__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* Đoạn đầu: chữ cái lớn, không thụt (tránh chồng với drop cap) */
+.envelope .letter__paragraph:first-of-type {
+  text-indent: 0;
+}
+
+.envelope .letter__paragraph:first-of-type::first-letter {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  padding-right: 0.02em;
+  font-size: 2.2em;
+  font-weight: 600;
+  line-height: 0.88;
+  color: #8b3d52;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.envelope .letter__signature {
+  margin: 0.35rem 0 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(183, 110, 121, 0.22);
+  font-size: 1.05rem;
+  font-weight: 500;
+  font-style: italic;
+  text-align: right;
+  color: #7a3d4f;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* Icon bánh cuối thư — hào quang hồng + bấm sang imageFly */
+.envelope .letter__cake-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.85rem 0 0;
+  padding: 0.55rem 0 0.2rem;
+  position: relative;
+}
+
+.envelope.open .letter__cake-wrap {
+  cursor: pointer;
+}
+
+.envelope.open .letter__cake-wrap:focus-visible {
+  outline: 2px solid rgba(255, 105, 180, 0.75);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.envelope .letter__cake-wrap::before {
+  content: "";
+  position: absolute;
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 143, 171, 0.5) 0%,
+    rgba(255, 105, 180, 0.22) 42%,
+    transparent 68%
+  );
+  animation: letterCakeAura 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes letterCakeAura {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+.envelope .letter__cake-icon {
+  position: relative;
+  z-index: 1;
+  width: 3.25rem;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  animation: letterCakeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes letterCakeGlow {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.95))
+      drop-shadow(0 0 12px rgba(255, 105, 180, 0.5));
+    transform: scale(1);
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgba(255, 192, 203, 1))
+      drop-shadow(0 0 22px rgba(255, 20, 147, 0.55))
+      drop-shadow(0 0 34px rgba(255, 105, 180, 0.35));
+    transform: scale(1.05);
+  }
+}
+
+.envelope .envelope__card.open {
+  -webkit-animation: cardJump 0.5s ease 0.5s forwards;
+  -o-animation: cardJump 0.5s ease 0.5s forwards;
+  animation: cardJump 0.5s ease 0.5s forwards;
+  z-index: 1;
+}
+
+.envelope .envelope__side {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  z-index: 2;
+}
+
+.envelope .envelope__side--left {
+  left: 0;
+  border-width: 100px 0 100px 150px;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+.envelope .envelope__side--right {
+  right: 0;
+  border-width: 100px 150px 100px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.envelope .envelope__side--bottom {
+  top: auto;
+  left: 0;
+  bottom: 0;
+  border-width: 0 150px 100px 150px;
+  border-color: transparent transparent #ecf0f1 transparent;
+}
+
+.envelope .envelope__side--top {
+  top: 0;
+  left: 0;
+  bottom: auto;
+  border-width: 100px 150px 0 150px;
+  border-color: #ecf0f1 transparent transparent transparent;
+  z-index: 1;
+}
+
+.envelope.open > .envelope__side--top {
+  top: -100px;
+  border-width: 0 150px 100px 150px;
+  border-color: transparent transparent #c9d0d2 transparent;
+}
+
+.heart {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -25%;
+  margin-left: -25px;
+  width: 50px;
+  fill: url(#heartRomanticGrad);
+  z-index: 2;
+}
+
+.heart use {
+  fill: url(#heartRomanticGrad);
+}
+
+.envelope:hover .heart {
+  transform: scale(1.2);
+  transition: 0.5s ease;
+}
+
+.envelope.open:hover .heart {
+  transform: none;
+}
+
+/* Sau khi thư được kéo ra: ẩn phần bao (nền xám + nắp + tim), giữ thư hiển thị */
+@keyframes envelopeBgFadeOut {
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes envelopeShellFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.envelope.open {
+  animation: envelopeBgFadeOut 0.45s ease 0.95s forwards;
+}
+
+.envelope.open > .envelope__side,
+.envelope.open > .heart {
+  animation: envelopeShellFadeOut 0.45s ease 0.95s forwards;
+}
+
+/* Căn giữa toàn bộ khối do .container flex — không dịch margin khi mở */
+.envelope-wrapper.letter-revealed,
+.envelope-wrapper.letter-revealed-done {
+  margin: 0;
+}
+
+/* Giữ thẻ ở vị trí đã kéo ra (không để cardJump “hồi sinh” giữa các bước) */
+.envelope-wrapper.letter-revealed:not(.letter-revealed-settling):not(
+    .letter-revealed-done
+  )
+  .envelope.open
+  > .envelope__card.open {
+  -webkit-animation: none;
+  animation: none;
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+/* Bước 2a — lá thư trượt xuống (translate3d + easing mềm ở đoạn cuối) */
+@-webkit-keyframes letterFall {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes letterFall {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.envelope-wrapper.letter-revealed.letter-revealed-settling
+  .envelope.open
+  > .envelope__card.open {
+  -webkit-animation: letterFall 1.12s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+  animation: letterFall 1.12s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Bước 2b — sau khi rơi xong: chuyển sang bố cục dòng chảy bình thường */
+.envelope-wrapper.letter-revealed-done .envelope.open {
+  height: auto;
+  min-height: 0;
+}
+
+.envelope-wrapper.letter-revealed-done .envelope.open > .envelope__card.open {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+  -webkit-animation: none;
+  animation: none;
+  -webkit-transform: none;
+  transform: none;
+  will-change: auto;
+}
+
+@keyframes cardJump {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@-webkit-keyframes cardJump {
+  from {
+    -webkit-transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+/* Màn rộng (máy tính): bao + lá thư ~1,4× so với mobile */
+@media (min-width: 900px) {
+  .envelope {
+    width: 420px;
+    height: 280px;
+  }
+
+  .envelope .envelope__card {
+    left: 0;
+    right: 0;
+    min-height: 280px;
+  }
+
+  .envelope .letter-scene {
+    max-height: 3.6rem;
+  }
+
+  .envelope .envelope__side--left {
+    border-width: 140px 0 140px 210px;
+  }
+
+  .envelope .envelope__side--right {
+    border-width: 140px 210px 140px 0;
+  }
+
+  .envelope .envelope__side--bottom {
+    border-width: 0 210px 140px 210px;
+  }
+
+  .envelope .envelope__side--top {
+    border-width: 140px 210px 0 210px;
+  }
+
+  .envelope.open > .envelope__side--top {
+    top: -140px;
+    border-width: 0 210px 140px 210px;
+  }
+
+  .heart {
+    margin-left: -35px;
+    width: 70px;
+    top: 54%;
+    margin-top: -22%;
+  }
+
+  .envelope .letter {
+    padding: 1.35rem 1.45rem 1.4rem;
+    gap: 0.55rem;
+  }
+
+  .envelope .letter::before {
+    inset: 0.65rem;
+  }
+
+  .envelope .letter__title {
+    font-size: 2.05rem;
+  }
+
+  .envelope .letter__paragraph {
+    font-size: 1.12rem;
+    line-height: 1.4;
+    text-indent: 1.15em;
+  }
+
+  .envelope .letter__paragraph:first-of-type {
+    text-indent: 0;
+  }
+
+  .envelope .letter__paragraph:first-of-type::first-letter {
+    font-size: 2.35em;
+  }
+
+  .envelope .letter__signature {
+    font-size: 1.32rem;
+  }
+
+  .envelope .letter__cake-icon {
+    width: 3.75rem;
+  }
+
+  .envelope .letter__cake-wrap::before {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}
+
+/* Màn thấp (điện thoại ngang, cửa sổ thấp): tránh thư bị đẩy/cắt — cuộn trong khung thư */
+@media (max-height: 600px) {
+  .envelope .envelope__card.open .letter-scene {
+    max-height: calc(100vh - 28px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .envelope .envelope__card.open .letter-scene::-webkit-scrollbar {
+    display: none;
+  }
+
+  .container {
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .envelope-wrapper,
+  .envelope-wrapper.letter-revealed,
+  .envelope-wrapper.letter-revealed-done {
+    margin: 0;
+  }
+}
+
+@supports (height: 100dvh) {
+  @media (max-height: 600px) {
+    .envelope .envelope__card.open .letter-scene {
+      max-height: calc(100dvh - 28px);
+    }
+  }
+}

@@ -1,0 +1,354 @@
+@font-face {
+  font-family: "Pacifico";
+  src: url("../assets/fonts/Pacifico-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+#intro-cake-screen,
+#intro-cake-screen *,
+#intro-cake-screen *::before,
+#intro-cake-screen *::after {
+  box-sizing: border-box;
+}
+
+#intro-cake-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: url("../assets/cover/backgroud.jpg") center / cover no-repeat;
+  background-color: #fce4ec;
+  overflow: hidden;
+  overscroll-behavior: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding-bottom: clamp(2rem, 6.5vh, 5rem);
+}
+
+#intro-cake-screen[hidden] {
+  display: none !important;
+}
+
+#intro-cake-screen:not([hidden]) {
+  display: flex;
+  /* Cao hơn màn chạm quà (z-index 10000) khi cả hai cùng lúc fade */
+  z-index: 10001;
+}
+
+/* Che vùng trên — trong suốt để không lặp ảnh nền (tránh 2 lớp cover lệch nhau) */
+#intro-cake-screen .top-fall-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(100px, 32vh, 380px);
+  background: transparent;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#intro-cake-screen .intro-cake-scene {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: center center;
+  margin-top: clamp(-6.75rem, -11.5vh, -3.5rem);
+}
+
+#intro-cake-screen #intro-cake-svg {
+  display: block;
+  position: relative;
+  width: 270px;
+  height: auto;
+  margin: -13.5em auto 0 auto;
+  overflow: visible;
+}
+
+/* ============================================== Candle */
+
+#intro-cake-screen .velas {
+  /* Sáp hồng/ivory — tách khỏi kem bánh (#fefae9) và nền sáng */
+  background: linear-gradient(
+    180deg,
+    #f4e0ea 0%,
+    #deb2c4 52%,
+    #c9899e 100%
+  );
+  border-radius: 10px;
+  position: absolute;
+  top: 308px;
+  left: 50%;
+  margin-left: -3.3px;
+  margin-top: -11px;
+  width: 7px;
+  height: 47px;
+  transform: translateY(-405px);
+  backface-visibility: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(120, 40, 70, 0.12),
+    0 2px 5px rgba(90, 30, 55, 0.22);
+  animation: intro-cake-in 500ms 4s ease-out forwards;
+}
+
+#intro-cake-screen .velas:after,
+#intro-cake-screen .velas:before {
+  background: rgba(140, 35, 72, 0.42);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
+}
+
+#intro-cake-screen .velas:after {
+  top: 25%;
+  left: 0;
+}
+
+#intro-cake-screen .velas:before {
+  top: 45%;
+  left: 0;
+}
+
+/* ============================================== Fire */
+
+#intro-cake-screen .fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -27px;
+  left: 50%;
+  margin-left: -3.5px;
+  width: 9px;
+  height: 25px;
+  transition:
+    opacity 0.45s ease,
+    box-shadow 0.45s ease,
+    transform 0.45s ease,
+    background 0.45s ease;
+}
+
+#intro-cake-screen .fuego:nth-child(1) {
+  animation: intro-cake-fuego 2s 4.5s infinite;
+}
+
+#intro-cake-screen .fuego:nth-child(2) {
+  animation: intro-cake-fuego 1.5s 4.5s infinite;
+}
+
+#intro-cake-screen .fuego:nth-child(3) {
+  animation: intro-cake-fuego 1s 4.5s infinite;
+}
+
+#intro-cake-screen .fuego:nth-child(4) {
+  animation: intro-cake-fuego 0.5s 4.5s infinite;
+}
+
+#intro-cake-screen .fuego:nth-child(5) {
+  animation: intro-cake-fuego 0.2s 4.5s infinite;
+}
+
+#intro-cake-screen .intro-cake-scene.is-candle-out .fuego {
+  animation: none !important;
+  opacity: 0;
+  visibility: hidden;
+  background: transparent;
+  box-shadow: none;
+  transform: scale(0.2) translateY(8px);
+}
+
+/* ============================================== Animation Fire */
+
+@keyframes intro-cake-fuego {
+  0%,
+  100% {
+    background: rgba(255, 200, 95, 0.82);
+    box-shadow:
+      0 0 14px 4px rgba(255, 160, 80, 0.55),
+      0 0 36px 12px rgba(255, 110, 90, 0.28);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 85, 45, 0.45);
+    box-shadow:
+      0 0 18px 8px rgba(255, 130, 60, 0.4),
+      0 0 42px 18px rgba(255, 60, 80, 0.22);
+    transform: translateY(-20px) scale(0);
+  }
+}
+
+@keyframes intro-cake-in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Sau crema: 4.6s */
+@keyframes intro-cake-textReveal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+#intro-cake-screen .intro-cake-text {
+  position: relative;
+  z-index: 5;
+  color: #a04565;
+  font-family: "Pacifico", cursive, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#intro-cake-screen .intro-cake-text .text-lines {
+  opacity: 0;
+  visibility: hidden;
+  animation: intro-cake-textReveal 0.75s ease-out 4.6s forwards;
+}
+
+#intro-cake-screen .intro-cake-text .text-btn-wrap {
+  opacity: 0;
+  visibility: hidden;
+  animation: intro-cake-textReveal 0.65s ease-out 5.35s forwards;
+}
+
+#intro-cake-screen .intro-cake-text h1 {
+  font-size: 2.05em;
+  margin: 0.35em 0 0.2em;
+}
+
+#intro-cake-screen .intro-cake-text p {
+  margin: 0;
+  font-size: 1.35em;
+}
+
+@keyframes intro-cake-natureGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 2px 14px rgba(80, 40, 60, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.95) inset,
+      0 0 6px 2px rgba(255, 255, 255, 0.85),
+      0 0 18px 4px rgba(255, 182, 210, 0.65),
+      0 0 28px 8px rgba(255, 140, 180, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 3px 18px rgba(80, 40, 60, 0.24),
+      0 0 0 1px rgba(255, 255, 255, 1) inset,
+      0 0 12px 4px rgba(255, 255, 255, 0.95),
+      0 0 26px 10px rgba(255, 200, 220, 0.85),
+      0 0 42px 14px rgba(255, 120, 170, 0.45);
+  }
+}
+
+#intro-cake-screen .text-btn-wrap .nature-btn {
+  margin-top: 1.35rem;
+}
+
+#intro-cake-screen .nature-btn {
+  position: relative;
+  z-index: 1;
+  padding: 0.45rem 0.65rem;
+  border: none;
+  border-radius: 22px;
+  /* Nền đủ đặc để mây trong ảnh cover (đặc biệt máy ngang) không “xuyên” qua nút */
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 2px 14px rgba(80, 40, 60, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+  animation: intro-cake-natureGlow 2.4s ease-in-out 5.35s infinite;
+}
+
+#intro-cake-screen .nature-btn img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#intro-cake-screen .nature-btn:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  box-shadow:
+    0 4px 20px rgba(80, 40, 60, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 1) inset;
+}
+
+#intro-cake-screen .nature-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #intro-cake-screen .intro-cake-text .text-lines,
+  #intro-cake-screen .intro-cake-text .text-btn-wrap {
+    animation: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  #intro-cake-screen .nature-btn {
+    animation: none;
+    box-shadow:
+      0 2px 14px rgba(80, 40, 60, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.95) inset,
+      0 0 10px 3px rgba(255, 220, 235, 0.75),
+      0 0 22px 6px rgba(255, 160, 190, 0.4);
+  }
+}
+
+@media (max-height: 620px) {
+  #intro-cake-screen .intro-cake-scene {
+    transform: scale(0.82);
+  }
+}
+
+@media (max-height: 500px) {
+  #intro-cake-screen .intro-cake-scene {
+    transform: scale(0.68);
+  }
+}
+
+@media (max-height: 400px) {
+  #intro-cake-screen .intro-cake-scene {
+    transform: scale(0.56);
+  }
+}
+
+@media (max-height: 320px) {
+  #intro-cake-screen .intro-cake-scene {
+    transform: scale(0.46);
+  }
+}
+
+/* Cùng breakpoint #bg-base (album/thư): nền intro bánh trên iPad */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  #intro-cake-screen {
+    background-image: url("../assets/cover/backgroudIpad.jpg");
+  }
+}
